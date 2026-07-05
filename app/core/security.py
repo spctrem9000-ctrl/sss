@@ -1,0 +1,29 @@
+import hashlib
+import os
+import random
+from datetime import datetime, timedelta, timezone
+from typing import Any, Union
+from jose import jwt
+from app.core.config import settings
+
+def create_access_token(subject: Union[str, Any], expires_delta: timedelta = None) -> str:
+    if expires_delta:
+        expire = datetime.now(timezone.utc) + expires_delta
+    else:
+        expire = datetime.now(timezone.utc) + timedelta(minutes=settings.ACCESS_TOKEN_EXPIRE_MINUTES)
+    
+    to_encode = {"exp": expire, "sub": str(subject), "type": "access"}
+    encoded_jwt = jwt.encode(to_encode, settings.JWT_SECRET, algorithm=settings.JWT_ALGORITHM)
+    return encoded_jwt
+
+def generate_refresh_token() -> str:
+    """Generate a secure random refresh token."""
+    return os.urandom(32).hex()
+
+def get_token_hash(token: str) -> str:
+    """Hash a token using SHA-256 for secure storage."""
+    return hashlib.sha256(token.encode()).hexdigest()
+
+def generate_otp() -> str:
+    """Generate a 6-digit OTP."""
+    return f"{random.randint(100000, 999999)}"
