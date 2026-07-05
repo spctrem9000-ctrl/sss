@@ -1,5 +1,9 @@
 from fastapi import APIRouter
 from app.api.v1 import health, version, app, auth, categories, products, cart, menu, orders, hub
+from app.api.v1.admin import auth as admin_auth
+from app.api.v1.admin import restaurants as admin_restaurants
+from app.api.v1.admin import branches as admin_branches
+from app.api.v1.admin import menu as admin_menu
 
 api_router = APIRouter()
 
@@ -13,3 +17,9 @@ api_router.include_router(menu.router, prefix="/v1/menu", tags=["Full Menu"])
 api_router.include_router(cart.router, prefix="/v1/cart", tags=["Cart & Checkout"])
 api_router.include_router(orders.router, prefix="/v1/orders", tags=["Orders"])
 api_router.include_router(hub.router, prefix="/v1/hub", tags=["Restaurant Hub API"])
+
+# Admin Routes
+api_router.include_router(admin_auth.router, prefix="/v1/admin/auth", tags=["Admin Auth"])
+api_router.include_router(admin_restaurants.router, prefix="/v1/admin/restaurants", tags=["Admin Restaurants"])
+api_router.include_router(admin_branches.router, prefix="/v1/admin/branches", tags=["Admin Branches"])
+api_router.include_router(admin_menu.router, prefix="/v1/admin/menu", tags=["Admin Menu"])

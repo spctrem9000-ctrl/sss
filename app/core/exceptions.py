@@ -3,6 +3,8 @@ from fastapi.responses import JSONResponse
 from loguru import logger
 from pydantic import ValidationError
 from sqlalchemy.exc import SQLAlchemyError
+from fastapi.exceptions import RequestValidationError
+from starlette.exceptions import HTTPException as StarletteHTTPException
 
 class BaseAPIException(Exception):
     def __init__(self, message: str, status_code: int):
@@ -23,6 +25,12 @@ class UnauthorizedException(BaseAPIException):
         super().__init__(message=message, status_code=status.HTTP_401_UNAUTHORIZED)
 
 async def global_exception_handler(request: Request, exc: Exception):
+    if isinstance(exc, StarletteHTTPException):
+        return JSONResponse(
+            status_code=exc.status_code,
+            content={"detail": exc.detail}
+        )
+        
     if isinstance(exc, BaseAPIException):
         logger.error(f"API Error: {exc.message} - Path: {request.url.path}")
         return JSONResponse(

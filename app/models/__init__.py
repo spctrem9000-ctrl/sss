@@ -10,3 +10,4 @@ from app.models.cart import Cart, CartItem
 from app.models.checkout import Coupon, DeliveryZone, LoyaltyAccount
 from app.models.order import Order, OrderItem, OrderStatusHistory
 from app.models.hub import RestaurantHubDevice
+from app.models.admin import AdminUser
