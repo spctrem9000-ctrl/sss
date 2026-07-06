@@ -13,15 +13,19 @@ router = APIRouter()
 
 class CategoryCreateAdmin(BaseModel):
     restaurant_id: int
-    name: str
-    description: str = None
+    name_ar: str
+    name_en: str
+    image: str = None
     sort_order: int = 0
     is_active: bool = True
 
 class ProductCreateAdmin(BaseModel):
+    restaurant_id: int
     category_id: int
-    name: str
-    description: str = None
+    name_ar: str
+    name_en: str
+    description_ar: str = None
+    description_en: str = None
     base_price: float
     is_available: bool = True
     sort_order: int = 0
