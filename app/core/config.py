@@ -24,8 +24,9 @@ class Settings(BaseSettings):
         elif v.startswith("postgresql://"):
             v = v.replace("postgresql://", "postgresql+psycopg://", 1)
 
-        # Strip any existing ssl/sslmode query params
+        # Automatically determine the correct SSL mode for Railway
         if "postgresql+psycopg://" in v:
+            # Strip any existing ssl/sslmode query params first
             if "?" in v:
                 base, params = v.split("?", 1)
                 cleaned = "&".join(
@@ -34,6 +35,13 @@ class Settings(BaseSettings):
                     and not p.lower().startswith("sslmode")
                 )
                 v = f"{base}?{cleaned}" if cleaned else base
+                
+            # Now append the correct sslmode based on the host
+            # Railway internal network does not use SSL, external proxy requires SSL
+            if ".railway.internal" in v:
+                v = f"{v}&sslmode=disable" if "?" in v else f"{v}?sslmode=disable"
+            else:
+                v = f"{v}&sslmode=require" if "?" in v else f"{v}?sslmode=require"
 
         return v
 
