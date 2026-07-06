@@ -18,14 +18,14 @@ class Settings(BaseSettings):
         if not v or not isinstance(v, str):
             return v
 
-        # Normalize scheme for asyncpg
+        # Normalize scheme for psycopg
         if v.startswith("postgres://"):
-            v = v.replace("postgres://", "postgresql+asyncpg://", 1)
+            v = v.replace("postgres://", "postgresql+psycopg://", 1)
         elif v.startswith("postgresql://"):
-            v = v.replace("postgresql://", "postgresql+asyncpg://", 1)
+            v = v.replace("postgresql://", "postgresql+psycopg://", 1)
 
         # Strip any existing ssl/sslmode query params
-        if "postgresql+asyncpg://" in v:
+        if "postgresql+psycopg://" in v:
             if "?" in v:
                 base, params = v.split("?", 1)
                 cleaned = "&".join(
