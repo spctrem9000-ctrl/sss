@@ -5,6 +5,7 @@ from app.api.v1.admin import restaurants as admin_restaurants
 from app.api.v1.admin import branches as admin_branches
 from app.api.v1.admin import menu as admin_menu
 from app.api.v1.admin import users as admin_users
+from app.api.v1.admin import customers as admin_customers
 
 api_router = APIRouter()
 
@@ -22,6 +23,7 @@ api_router.include_router(hub.router, prefix="/v1/hub", tags=["Restaurant Hub AP
 # Admin Routes
 api_router.include_router(admin_auth.router, prefix="/v1/admin/auth", tags=["Admin Auth"])
 api_router.include_router(admin_users.router, prefix="/v1/admin/users", tags=["Admin Users"])
+api_router.include_router(admin_customers.router, prefix="/v1/admin/customers", tags=["Admin Customers"])
 api_router.include_router(admin_restaurants.router, prefix="/v1/admin/restaurants", tags=["Admin Restaurants"])
 api_router.include_router(admin_branches.router, prefix="/v1/admin/branches", tags=["Admin Branches"])
 api_router.include_router(admin_menu.router, prefix="/v1/admin/menu", tags=["Admin Menu"])
