@@ -24,7 +24,7 @@ class Settings(BaseSettings):
         elif v.startswith("postgresql://"):
             v = v.replace("postgresql://", "postgresql+asyncpg://", 1)
 
-        # Strip any existing ssl/sslmode query params and append ssl=disable
+        # Strip any existing ssl/sslmode query params
         if "postgresql+asyncpg://" in v:
             if "?" in v:
                 base, params = v.split("?", 1)
@@ -33,9 +33,7 @@ class Settings(BaseSettings):
                     if not p.lower().startswith("ssl")
                     and not p.lower().startswith("sslmode")
                 )
-                v = f"{base}?{cleaned}&ssl=disable" if cleaned else f"{base}?ssl=disable"
-            else:
-                v = f"{v}?ssl=disable"
+                v = f"{base}?{cleaned}" if cleaned else base
 
         return v
 
