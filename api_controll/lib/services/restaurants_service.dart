@@ -15,17 +15,25 @@ class RestaurantsService {
 
   Future<Restaurant> createRestaurant({
     required String name,
-    required String slug,
-    required String description,
-    bool isActive = true,
+    String currency = "SAR",
+    String country = "SA",
+    bool isEnabled = true,
   }) async {
     final response = await _api.post('/admin/restaurants', {
       'name': name,
-      'slug': slug,
-      'description': description,
-      'is_active': isActive,
+      'currency': currency,
+      'country': country,
+      'is_enabled': isEnabled,
     });
     
+    return Restaurant.fromJson(response);
+  }
+
+  Future<Restaurant> updateRestaurant(int id, {bool? isEnabled}) async {
+    final Map<String, dynamic> data = {};
+    if (isEnabled != null) data['is_enabled'] = isEnabled;
+    
+    final response = await _api.patch('/admin/restaurants/$id', data);
     return Restaurant.fromJson(response);
   }
 }

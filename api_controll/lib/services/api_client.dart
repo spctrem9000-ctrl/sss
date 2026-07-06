@@ -44,6 +44,15 @@ class ApiClient {
     return _handleResponse(response);
   }
 
+  Future<dynamic> patch(String endpoint, Map<String, dynamic> body) async {
+    final response = await http.patch(
+      Uri.parse('${Constants.baseUrl}$endpoint'),
+      headers: await _getHeaders(),
+      body: jsonEncode(body),
+    );
+    return _handleResponse(response);
+  }
+
   Future<dynamic> delete(String endpoint) async {
     final response = await http.delete(
       Uri.parse('${Constants.baseUrl}$endpoint'),

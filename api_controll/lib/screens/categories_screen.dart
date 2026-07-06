@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import '../services/menu_service.dart';
+import '../models/category.dart';
+import 'products_screen.dart';
 
 class CategoriesScreen extends StatefulWidget {
   final int restaurantId;
@@ -12,10 +14,28 @@ class CategoriesScreen extends StatefulWidget {
 class _CategoriesScreenState extends State<CategoriesScreen> {
   final _service = MenuService();
   bool _isLoading = false;
+  List<Category> _categories = [];
+
+  @override
+  void initState() {
+    super.initState();
+    _fetchCategories();
+  }
+
+  Future<void> _fetchCategories() async {
+    setState(() => _isLoading = true);
+    try {
+      final categories = await _service.getCategories(widget.restaurantId);
+      setState(() => _categories = categories);
+    } catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(e.toString())));
+    } finally {
+      setState(() => _isLoading = false);
+    }
+  }
 
   void _showAddDialog() {
     final nameCtrl = TextEditingController();
-    final descCtrl = TextEditingController();
 
     showDialog(
       context: context,
@@ -25,8 +45,7 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              TextField(controller: nameCtrl, decoration: InputDecoration(labelText: 'Name')),
-              TextField(controller: descCtrl, decoration: InputDecoration(labelText: 'Description')),
+              TextField(controller: nameCtrl, decoration: InputDecoration(labelText: 'Name (Ar/En)')),
             ],
           ),
         ),
@@ -40,12 +59,11 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
                 await _service.createCategory(
                   restaurantId: widget.restaurantId,
                   name: nameCtrl.text,
-                  description: descCtrl.text,
                 );
                 ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('Category Added!')));
+                _fetchCategories();
               } catch (e) {
                 ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(e.toString())));
-              } finally {
                 setState(() => _isLoading = false);
               }
             },
@@ -60,7 +78,29 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text('Manage Categories')),
-      body: Center(child: Text('Category list fetching requires GET endpoint implementation.')),
+      body: _isLoading 
+        ? Center(child: CircularProgressIndicator())
+        : ListView.builder(
+            itemCount: _categories.length,
+            itemBuilder: (ctx, i) {
+              final cat = _categories[i];
+              return ListTile(
+                leading: Icon(Icons.category, color: Colors.green),
+                title: Text(cat.nameAr),
+                subtitle: Text(cat.isActive ? "Active" : "Inactive"),
+                trailing: Icon(Icons.arrow_forward_ios),
+                onTap: () {
+                  Navigator.of(context).push(MaterialPageRoute(
+                    builder: (_) => ProductsScreen(
+                      restaurantId: widget.restaurantId,
+                      categoryId: cat.id,
+                      categoryName: cat.nameAr,
+                    )
+                  ));
+                },
+              );
+            },
+          ),
       floatingActionButton: FloatingActionButton(
         onPressed: _showAddDialog,
         child: Icon(Icons.add),

@@ -56,3 +56,25 @@ async def create_product(
     await db.commit()
     await db.refresh(product)
     return product
+
+from sqlalchemy import select
+
+@router.get("/categories", response_model=List[CategoryResponse])
+async def get_categories(
+    restaurant_id: int,
+    admin: AdminUser = Depends(get_current_admin),
+    db: AsyncSession = Depends(get_db_session)
+):
+    stmt = select(Category).filter(Category.restaurant_id == restaurant_id)
+    result = await db.execute(stmt)
+    return result.scalars().all()
+
+@router.get("/products", response_model=List[ProductResponse])
+async def get_products(
+    category_id: int,
+    admin: AdminUser = Depends(get_current_admin),
+    db: AsyncSession = Depends(get_db_session)
+):
+    stmt = select(Product).filter(Product.category_id == category_id)
+    result = await db.execute(stmt)
+    return result.scalars().all()

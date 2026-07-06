@@ -34,3 +34,28 @@ async def get_restaurants(
         
     result = await db.execute(stmt)
     return result.scalars().all()
+
+from fastapi import HTTPException
+from app.schemas.restaurant import RestaurantUpdate
+
+@router.patch("/{id}", response_model=RestaurantResponse)
+async def update_restaurant(
+    id: int,
+    data: RestaurantUpdate,
+    admin: AdminUser = Depends(require_super_admin),
+    db: AsyncSession = Depends(get_db_session)
+):
+    stmt = select(Restaurant).filter(Restaurant.id == id)
+    result = await db.execute(stmt)
+    restaurant = result.scalars().first()
+    
+    if not restaurant:
+        raise HTTPException(status_code=404, detail="Restaurant not found")
+        
+    update_data = data.model_dump(exclude_unset=True)
+    for key, value in update_data.items():
+        setattr(restaurant, key, value)
+        
+    await db.commit()
+    await db.refresh(restaurant)
+    return restaurant

@@ -4,6 +4,7 @@ import 'login_screen.dart';
 import 'restaurants_screen.dart';
 import 'categories_screen.dart';
 import 'products_screen.dart';
+import 'admins_screen.dart';
 
 class DashboardScreen extends StatelessWidget {
   final _authService = AuthService();
@@ -42,12 +43,8 @@ class DashboardScreen extends StatelessWidget {
               MaterialPageRoute(builder: (_) => RestaurantsScreen()),
             ),
           ),
-          _buildCard(context, 'Admins', Icons.admin_panel_settings, Colors.blue, () {}),
-          _buildCard(context, 'Categories', Icons.category, Colors.green, () {
-            Navigator.of(context).push(MaterialPageRoute(builder: (_) => CategoriesScreen(restaurantId: 1)));
-          }),
-          _buildCard(context, 'Products', Icons.fastfood, Colors.red, () {
-            Navigator.of(context).push(MaterialPageRoute(builder: (_) => ProductsScreen(categoryId: 1)));
+          _buildCard(context, 'Owners/Admins', Icons.admin_panel_settings, Colors.blue, () {
+            Navigator.of(context).push(MaterialPageRoute(builder: (_) => AdminsScreen()));
           }),
           _buildCard(context, 'Orders', Icons.receipt, Colors.purple, () {}),
           _buildCard(context, 'Settings', Icons.settings, Colors.grey, () {}),

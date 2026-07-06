@@ -5,6 +5,13 @@ class AdminLoginRequest(BaseModel):
     email: EmailStr
     password: str
 
+class AdminCreateRequest(BaseModel):
+    email: EmailStr
+    password: str
+    first_name: str
+    last_name: str
+    restaurant_id: Optional[int] = None
+
 class AdminUserResponse(BaseModel):
     id: int
     email: str

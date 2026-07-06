@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../models/restaurant.dart';
 import '../services/restaurants_service.dart';
+import 'categories_screen.dart';
 
 class RestaurantsScreen extends StatefulWidget {
   @override
@@ -30,10 +31,19 @@ class _RestaurantsScreenState extends State<RestaurantsScreen> {
     }
   }
 
+  Future<void> _toggleStatus(Restaurant r) async {
+    setState(() => _isLoading = true);
+    try {
+      await _service.updateRestaurant(r.id, isEnabled: !r.isEnabled);
+      await _loadRestaurants();
+    } catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(e.toString())));
+      setState(() => _isLoading = false);
+    }
+  }
+
   void _showAddDialog() {
     final nameCtrl = TextEditingController();
-    final slugCtrl = TextEditingController();
-    final descCtrl = TextEditingController();
 
     showDialog(
       context: context,
@@ -43,9 +53,7 @@ class _RestaurantsScreenState extends State<RestaurantsScreen> {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              TextField(controller: nameCtrl, decoration: InputDecoration(labelText: 'Name')),
-              TextField(controller: slugCtrl, decoration: InputDecoration(labelText: 'Slug (e.g. kfc-cairo)')),
-              TextField(controller: descCtrl, decoration: InputDecoration(labelText: 'Description')),
+              TextField(controller: nameCtrl, decoration: InputDecoration(labelText: 'Restaurant Name')),
             ],
           ),
         ),
@@ -56,11 +64,7 @@ class _RestaurantsScreenState extends State<RestaurantsScreen> {
               Navigator.of(ctx).pop();
               setState(() => _isLoading = true);
               try {
-                await _service.createRestaurant(
-                  name: nameCtrl.text,
-                  slug: slugCtrl.text,
-                  description: descCtrl.text,
-                );
+                await _service.createRestaurant(name: nameCtrl.text);
                 _loadRestaurants();
               } catch (e) {
                 ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(e.toString())));
@@ -94,11 +98,18 @@ class _RestaurantsScreenState extends State<RestaurantsScreen> {
                     return ListTile(
                       leading: CircleAvatar(child: Icon(Icons.restaurant)),
                       title: Text(r.name),
-                      subtitle: Text(r.slug),
+                      subtitle: Text(r.country + " - " + r.currency),
                       trailing: Switch(
-                        value: r.isActive,
-                        onChanged: null, // read-only for now
+                        value: r.isEnabled,
+                        onChanged: (val) => _toggleStatus(r),
+                        activeColor: Colors.green,
                       ),
+                      onTap: () {
+                        // Navigate to Categories for this specific restaurant!
+                        Navigator.of(context).push(MaterialPageRoute(
+                          builder: (_) => CategoriesScreen(restaurantId: r.id),
+                        ));
+                      },
                     );
                   },
                 ),
