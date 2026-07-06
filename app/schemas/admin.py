@@ -1,5 +1,5 @@
 from typing import Optional
-from pydantic import BaseModel, EmailStr
+from pydantic import BaseModel, EmailStr, ConfigDict
 
 class AdminLoginRequest(BaseModel):
     email: EmailStr
@@ -14,8 +14,7 @@ class AdminUserResponse(BaseModel):
     is_active: bool
     restaurant_id: Optional[int] = None
 
-    class Config:
-        from_attributes = True
+    model_config = ConfigDict(from_attributes=True)
 
 class AdminTokenResponse(BaseModel):
     access_token: str

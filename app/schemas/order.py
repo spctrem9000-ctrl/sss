@@ -1,6 +1,6 @@
 from typing import List, Optional
 from datetime import datetime
-from pydantic import BaseModel
+from pydantic import BaseModel, ConfigDict
 from app.schemas.menu import ProductResponse, ProductSizeResponse
 
 class CheckoutRequest(BaseModel):
@@ -15,8 +15,7 @@ class OrderStatusHistoryResponse(BaseModel):
     created_at: datetime
     created_by: Optional[int] = None
 
-    class Config:
-        from_attributes = True
+    model_config = ConfigDict(from_attributes=True)
 
 class OrderItemResponse(BaseModel):
     id: int
@@ -32,8 +31,7 @@ class OrderItemResponse(BaseModel):
     product: Optional[ProductResponse] = None
     size: Optional[ProductSizeResponse] = None
 
-    class Config:
-        from_attributes = True
+    model_config = ConfigDict(from_attributes=True)
 
 class OrderResponse(BaseModel):
     id: int
@@ -49,8 +47,7 @@ class OrderResponse(BaseModel):
     estimated_time: Optional[datetime] = None
     created_at: datetime
 
-    class Config:
-        from_attributes = True
+    model_config = ConfigDict(from_attributes=True)
 
 class OrderDetailResponse(OrderResponse):
     restaurant_id: int

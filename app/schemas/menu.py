@@ -1,5 +1,5 @@
 from typing import List, Optional, Generic, TypeVar
-from pydantic import BaseModel
+from pydantic import BaseModel, ConfigDict
 from datetime import datetime
 
 T = TypeVar("T")
@@ -19,16 +19,14 @@ class CategoryResponse(BaseModel):
     sort_order: int
     is_active: bool
 
-    class Config:
-        from_attributes = True
+    model_config = ConfigDict(from_attributes=True)
 
 class ProductImageResponse(BaseModel):
     id: int
     image_url: str
     sort_order: int
 
-    class Config:
-        from_attributes = True
+    model_config = ConfigDict(from_attributes=True)
 
 class ProductSizeResponse(BaseModel):
     id: int
@@ -37,8 +35,7 @@ class ProductSizeResponse(BaseModel):
     price: float
     sort_order: int
 
-    class Config:
-        from_attributes = True
+    model_config = ConfigDict(from_attributes=True)
 
 class AddonResponse(BaseModel):
     id: int
@@ -48,8 +45,7 @@ class AddonResponse(BaseModel):
     is_available: bool
     sort_order: int
 
-    class Config:
-        from_attributes = True
+    model_config = ConfigDict(from_attributes=True)
 
 class AddonGroupResponse(BaseModel):
     id: int
@@ -61,8 +57,7 @@ class AddonGroupResponse(BaseModel):
     sort_order: int
     addons: List[AddonResponse] = []
 
-    class Config:
-        from_attributes = True
+    model_config = ConfigDict(from_attributes=True)
 
 class ProductResponse(BaseModel):
     id: int
@@ -87,12 +82,10 @@ class ProductResponse(BaseModel):
     sizes: List[ProductSizeResponse] = []
     addon_groups: List[AddonGroupResponse] = []
 
-    class Config:
-        from_attributes = True
+    model_config = ConfigDict(from_attributes=True)
 
 class MenuResponse(BaseModel):
     categories: List[CategoryResponse]
     products: List[ProductResponse]
     
-    class Config:
-        from_attributes = True
+    model_config = ConfigDict(from_attributes=True)

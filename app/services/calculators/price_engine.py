@@ -21,8 +21,8 @@ class PriceEngine:
     ) -> Cart:
         
         # 1. Subtotal
-        cart.subtotal = sum(item.total_price for item in cart.items)
-        cart.addons_total = sum(item.addons_total for item in cart.items)
+        cart.subtotal = sum((item.total_price or 0.0) for item in cart.items)
+        cart.addons_total = sum((item.addons_total or 0.0) for item in cart.items)
         
         # 2. Discount
         cart.discount = 0.0

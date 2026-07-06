@@ -1,0 +1,998 @@
+2026-07-06 21:04:12.743 | ERROR    | app.core.exceptions:global_exception_handler:49 - Database Error: (sqlite3.OperationalError) no such table: otp_codes
+[SQL: DELETE FROM otp_codes WHERE otp_codes.phone_number = ?]
+[parameters: ('+1234567890',)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8) - Path: /api/v1/auth/request-otp
+2026-07-06 21:04:12.757 | ERROR    | app.core.exceptions:global_exception_handler:49 - Database Error: (sqlite3.OperationalError) no such table: otp_codes
+[SQL: SELECT otp_codes.id, otp_codes.phone_number, otp_codes.code, otp_codes.expires_at, otp_codes.created_at, otp_codes.updated_at 
+FROM otp_codes 
+WHERE otp_codes.phone_number = ? AND otp_codes.code = ? AND otp_codes.expires_at > ?]
+[parameters: ('+1234567890', '000000', '2026-07-06 18:04:12.752995')]
+(Background on this error at: https://sqlalche.me/e/20/e3q8) - Path: /api/v1/auth/verify-otp
+2026-07-06 21:04:47.304 | ERROR    | app.core.exceptions:global_exception_handler:56 - Unknown Error: type object 'Application' has no attribute 'branches' - Path: /api/v1/app/initialize
+Traceback (most recent call last):
+
+  File "<frozen runpy>", line 203, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+
+  File "D:\api\.venv\Scripts\pytest.exe\__main__.py", line 5, in <module>
+
+  File "D:\api\.venv\Lib\site-packages\_pytest\config\__init__.py", line 253, in _console_main
+    code = _main(prog=_get_prog_name(sys.argv))
+           │          │              │   └ ['D:\\api\\.venv\\Scripts\\pytest', '-o', 'asyncio_mode=auto', 'tests']
+           │          │              └ <module 'sys' (built-in)>
+           │          └ <function _get_prog_name at 0x0000027327C5D010>
+           └ <function _main at 0x0000027327C5D2D0>
+  File "D:\api\.venv\Lib\site-packages\_pytest\config\__init__.py", line 229, in _main
+    ret: ExitCode | int = config.hook.pytest_cmdline_main(config=config)
+         │                │      │    │                          └ <_pytest.config.Config object at 0x0000027327E192B0>
+         │                │      │    └ <HookCaller 'pytest_cmdline_main'>
+         │                │      └ <pluggy._hooks.HookRelay object at 0x0000027327ACF4D0>
+         │                └ <_pytest.config.Config object at 0x0000027327E192B0>
+         └ <enum 'ExitCode'>
+  File "D:\api\.venv\Lib\site-packages\pluggy\_hooks.py", line 512, in __call__
+    return self._hookexec(self.name, self._hookimpls.copy(), kwargs, firstresult)
+           │    │         │    │     │    │                  │       └ True
+           │    │         │    │     │    │                  └ {'config': <_pytest.config.Config object at 0x0000027327E192B0>}
+           │    │         │    │     │    └ <member '_hookimpls' of 'HookCaller' objects>
+           │    │         │    │     └ <HookCaller 'pytest_cmdline_main'>
+           │    │         │    └ <member 'name' of 'HookCaller' objects>
+           │    │         └ <HookCaller 'pytest_cmdline_main'>
+           │    └ <member '_hookexec' of 'HookCaller' objects>
+           └ <HookCaller 'pytest_cmdline_main'>
+  File "D:\api\.venv\Lib\site-packages\pluggy\_manager.py", line 120, in _hookexec
+    return self._inner_hookexec(hook_name, methods, kwargs, firstresult)
+           │    │               │          │        │       └ True
+           │    │               │          │        └ {'config': <_pytest.config.Config object at 0x0000027327E192B0>}
+           │    │               │          └ [<HookImpl plugin_name='main', plugin=<module '_pytest.main' from 'D:\\api\\.venv\\Lib\\site-packages\\_pytest\\main.py'>>, <...
+           │    │               └ 'pytest_cmdline_main'
+           │    └ <function _multicall at 0x00000273279BA610>
+           └ <_pytest.config.PytestPluginManager object at 0x0000027327ACF230>
+  File "D:\api\.venv\Lib\site-packages\pluggy\_callers.py", line 121, in _multicall
+    res = hook_impl.function(*args)
+          │         │         └ [<_pytest.config.Config object at 0x0000027327E192B0>]
+          │         └ <member 'function' of 'HookImpl' objects>
+          └ <HookImpl plugin_name='main', plugin=<module '_pytest.main' from 'D:\\api\\.venv\\Lib\\site-packages\\_pytest\\main.py'>>
+  File "D:\api\.venv\Lib\site-packages\_pytest\main.py", line 377, in pytest_cmdline_main
+    return wrap_session(config, _main)
+           │            │       └ <function _main at 0x0000027327E0BAB0>
+           │            └ <_pytest.config.Config object at 0x0000027327E192B0>
+           └ <function wrap_session at 0x0000027327E0B7F0>
+  File "D:\api\.venv\Lib\site-packages\_pytest\main.py", line 330, in wrap_session
+    session.exitstatus = doit(config, session) or 0
+    │       │            │    │       └ <Session  exitstatus=<ExitCode.OK: 0> testsfailed=0 testscollected=28>
+    │       │            │    └ <_pytest.config.Config object at 0x0000027327E192B0>
+    │       │            └ <function _main at 0x0000027327E0BAB0>
+    │       └ <ExitCode.OK: 0>
+    └ <Session  exitstatus=<ExitCode.OK: 0> testsfailed=0 testscollected=28>
+  File "D:\api\.venv\Lib\site-packages\_pytest\main.py", line 384, in _main
+    config.hook.pytest_runtestloop(session=session)
+    │      │    │                          └ <Session  exitstatus=<ExitCode.OK: 0> testsfailed=0 testscollected=28>
+    │      │    └ <HookCaller 'pytest_runtestloop'>
+    │      └ <pluggy._hooks.HookRelay object at 0x0000027327ACF4D0>
+    └ <_pytest.config.Config object at 0x0000027327E192B0>
+  File "D:\api\.venv\Lib\site-packages\pluggy\_hooks.py", line 512, in __call__
+    return self._hookexec(self.name, self._hookimpls.copy(), kwargs, firstresult)
+           │    │         │    │     │    │                  │       └ True
+           │    │         │    │     │    │                  └ {'session': <Session  exitstatus=<ExitCode.OK: 0> testsfailed=0 testscollected=28>}
+           │    │         │    │     │    └ <member '_hookimpls' of 'HookCaller' objects>
+           │    │         │    │     └ <HookCaller 'pytest_runtestloop'>
+           │    │         │    └ <member 'name' of 'HookCaller' objects>
+           │    │         └ <HookCaller 'pytest_runtestloop'>
+           │    └ <member '_hookexec' of 'HookCaller' objects>
+           └ <HookCaller 'pytest_runtestloop'>
+  File "D:\api\.venv\Lib\site-packages\pluggy\_manager.py", line 120, in _hookexec
+    return self._inner_hookexec(hook_name, methods, kwargs, firstresult)
+           │    │               │          │        │       └ True
+           │    │               │          │        └ {'session': <Session  exitstatus=<ExitCode.OK: 0> testsfailed=0 testscollected=28>}
+           │    │               │          └ [<HookImpl plugin_name='main', plugin=<module '_pytest.main' from 'D:\\api\\.venv\\Lib\\site-packages\\_pytest\\main.py'>>, <...
+           │    │               └ 'pytest_runtestloop'
+           │    └ <function _multicall at 0x00000273279BA610>
+           └ <_pytest.config.PytestPluginManager object at 0x0000027327ACF230>
+  File "D:\api\.venv\Lib\site-packages\pluggy\_callers.py", line 121, in _multicall
+    res = hook_impl.function(*args)
+          │         │         └ [<Session  exitstatus=<ExitCode.OK: 0> testsfailed=0 testscollected=28>]
+          │         └ <member 'function' of 'HookImpl' objects>
+          └ <HookImpl plugin_name='main', plugin=<module '_pytest.main' from 'D:\\api\\.venv\\Lib\\site-packages\\_pytest\\main.py'>>
+  File "D:\api\.venv\Lib\site-packages\_pytest\main.py", line 408, in pytest_runtestloop
+    item.config.hook.pytest_runtest_protocol(item=item, nextitem=nextitem)
+    │    │                                        │              └ <Coroutine test_request_otp>
+    │    │                                        └ <Coroutine test_initialize_app_not_found>
+    │    └ <member 'config' of 'Node' objects>
+    └ <Coroutine test_initialize_app_not_found>
+  File "D:\api\.venv\Lib\site-packages\pluggy\_hooks.py", line 512, in __call__
+    return self._hookexec(self.name, self._hookimpls.copy(), kwargs, firstresult)
+           │    │         │    │     │    │                  │       └ True
+           │    │         │    │     │    │                  └ {'item': <Coroutine test_initialize_app_not_found>, 'nextitem': <Coroutine test_request_otp>}
+           │    │         │    │     │    └ <member '_hookimpls' of 'HookCaller' objects>
+           │    │         │    │     └ <HookCaller 'pytest_runtest_protocol'>
+           │    │         │    └ <member 'name' of 'HookCaller' objects>
+           │    │         └ <HookCaller 'pytest_runtest_protocol'>
+           │    └ <member '_hookexec' of 'HookCaller' objects>
+           └ <HookCaller 'pytest_runtest_protocol'>
+  File "D:\api\.venv\Lib\site-packages\pluggy\_manager.py", line 120, in _hookexec
+    return self._inner_hookexec(hook_name, methods, kwargs, firstresult)
+           │    │               │          │        │       └ True
+           │    │               │          │        └ {'item': <Coroutine test_initialize_app_not_found>, 'nextitem': <Coroutine test_request_otp>}
+           │    │               │          └ [<HookImpl plugin_name='runner', plugin=<module '_pytest.runner' from 'D:\\api\\.venv\\Lib\\site-packages\\_pytest\\runner.py...
+           │    │               └ 'pytest_runtest_protocol'
+           │    └ <function _multicall at 0x00000273279BA610>
+           └ <_pytest.config.PytestPluginManager object at 0x0000027327ACF230>
+  File "D:\api\.venv\Lib\site-packages\pluggy\_callers.py", line 121, in _multicall
+    res = hook_impl.function(*args)
+          │         │         └ [<Coroutine test_initialize_app_not_found>, <Coroutine test_request_otp>]
+          │         └ <member 'function' of 'HookImpl' objects>
+          └ <HookImpl plugin_name='runner', plugin=<module '_pytest.runner' from 'D:\\api\\.venv\\Lib\\site-packages\\_pytest\\runner.py'>>
+  File "D:\api\.venv\Lib\site-packages\_pytest\runner.py", line 118, in pytest_runtest_protocol
+    runtestprotocol(item, nextitem=nextitem)
+    │               │              └ <Coroutine test_request_otp>
+    │               └ <Coroutine test_initialize_app_not_found>
+    └ <function runtestprotocol at 0x0000027327E097A0>
+  File "D:\api\.venv\Lib\site-packages\_pytest\runner.py", line 139, in runtestprotocol
+    reports.append(call_and_report(item, "call", log))
+    │       │      │               │             └ True
+    │       │      │               └ <Coroutine test_initialize_app_not_found>
+    │       │      └ <function call_and_report at 0x0000027327E0A140>
+    │       └ <method 'append' of 'list' objects>
+    └ [<TestReport 'tests/integration/test_app_endpoints.py::test_initialize_app_not_found' when='setup' outcome='passed'>]
+  File "D:\api\.venv\Lib\site-packages\_pytest\runner.py", line 249, in call_and_report
+    call = CallInfo.from_call(
+           │        └ <classmethod(<function CallInfo.from_call at 0x0000027327E0A8D0>)>
+           └ <class '_pytest.runner.CallInfo'>
+  File "D:\api\.venv\Lib\site-packages\_pytest\runner.py", line 361, in from_call
+    result: TResult | None = func()
+            │                └ <function call_and_report.<locals>.<lambda> at 0x000002732DE65F30>
+            └ +TResult
+  File "D:\api\.venv\Lib\site-packages\_pytest\runner.py", line 250, in <lambda>
+    lambda: runtest_hook(item=item, **kwds),
+            │                 │       └ {}
+            │                 └ <Coroutine test_initialize_app_not_found>
+            └ <HookCaller 'pytest_runtest_call'>
+  File "D:\api\.venv\Lib\site-packages\pluggy\_hooks.py", line 512, in __call__
+    return self._hookexec(self.name, self._hookimpls.copy(), kwargs, firstresult)
+           │    │         │    │     │    │                  │       └ False
+           │    │         │    │     │    │                  └ {'item': <Coroutine test_initialize_app_not_found>}
+           │    │         │    │     │    └ <member '_hookimpls' of 'HookCaller' objects>
+           │    │         │    │     └ <HookCaller 'pytest_runtest_call'>
+           │    │         │    └ <member 'name' of 'HookCaller' objects>
+           │    │         └ <HookCaller 'pytest_runtest_call'>
+           │    └ <member '_hookexec' of 'HookCaller' objects>
+           └ <HookCaller 'pytest_runtest_call'>
+  File "D:\api\.venv\Lib\site-packages\pluggy\_manager.py", line 120, in _hookexec
+    return self._inner_hookexec(hook_name, methods, kwargs, firstresult)
+           │    │               │          │        │       └ False
+           │    │               │          │        └ {'item': <Coroutine test_initialize_app_not_found>}
+           │    │               │          └ [<HookImpl plugin_name='threadexception', plugin=<module '_pytest.threadexception' from 'D:\\api\\.venv\\Lib\\site-packages\\...
+           │    │               └ 'pytest_runtest_call'
+           │    └ <function _multicall at 0x00000273279BA610>
+           └ <_pytest.config.PytestPluginManager object at 0x0000027327ACF230>
+  File "D:\api\.venv\Lib\site-packages\pluggy\_callers.py", line 121, in _multicall
+    res = hook_impl.function(*args)
+          │         │         └ [<Coroutine test_initialize_app_not_found>]
+          │         └ <member 'function' of 'HookImpl' objects>
+          └ <HookImpl plugin_name='runner', plugin=<module '_pytest.runner' from 'D:\\api\\.venv\\Lib\\site-packages\\_pytest\\runner.py'>>
+  File "D:\api\.venv\Lib\site-packages\_pytest\runner.py", line 184, in pytest_runtest_call
+    item.runtest()
+    │    └ <function PytestAsyncioFunction.runtest at 0x000002732A6F2560>
+    └ <Coroutine test_initialize_app_not_found>
+  File "D:\api\.venv\Lib\site-packages\pytest_asyncio\plugin.py", line 569, in runtest
+    super().runtest()
+  File "D:\api\.venv\Lib\site-packages\_pytest\python.py", line 1707, in runtest
+    self.ihook.pytest_pyfunc_call(pyfuncitem=self)
+    │    │                                   └ <Coroutine test_initialize_app_not_found>
+    │    └ <property object at 0x0000027327D78400>
+    └ <Coroutine test_initialize_app_not_found>
+  File "D:\api\.venv\Lib\site-packages\pluggy\_hooks.py", line 512, in __call__
+    return self._hookexec(self.name, self._hookimpls.copy(), kwargs, firstresult)
+           │    │         │    │     │    │                  │       └ True
+           │    │         │    │     │    │                  └ {'pyfuncitem': <Coroutine test_initialize_app_not_found>}
+           │    │         │    │     │    └ <member '_hookimpls' of 'HookCaller' objects>
+           │    │         │    │     └ <HookCaller 'pytest_pyfunc_call'>
+           │    │         │    └ <member 'name' of 'HookCaller' objects>
+           │    │         └ <HookCaller 'pytest_pyfunc_call'>
+           │    └ <member '_hookexec' of 'HookCaller' objects>
+           └ <HookCaller 'pytest_pyfunc_call'>
+  File "D:\api\.venv\Lib\site-packages\pluggy\_manager.py", line 120, in _hookexec
+    return self._inner_hookexec(hook_name, methods, kwargs, firstresult)
+           │    │               │          │        │       └ True
+           │    │               │          │        └ {'pyfuncitem': <Coroutine test_initialize_app_not_found>}
+           │    │               │          └ [<HookImpl plugin_name='python', plugin=<module '_pytest.python' from 'D:\\api\\.venv\\Lib\\site-packages\\_pytest\\python.py...
+           │    │               └ 'pytest_pyfunc_call'
+           │    └ <function _multicall at 0x00000273279BA610>
+           └ <_pytest.config.PytestPluginManager object at 0x0000027327ACF230>
+  File "D:\api\.venv\Lib\site-packages\pluggy\_callers.py", line 121, in _multicall
+    res = hook_impl.function(*args)
+          │         │         └ [<Coroutine test_initialize_app_not_found>]
+          │         └ <member 'function' of 'HookImpl' objects>
+          └ <HookImpl plugin_name='python', plugin=<module '_pytest.python' from 'D:\\api\\.venv\\Lib\\site-packages\\_pytest\\python.py'>>
+  File "D:\api\.venv\Lib\site-packages\_pytest\python.py", line 167, in pytest_pyfunc_call
+    result = testfunction(**testargs)
+             │              └ {'async_client': <httpx.AsyncClient object at 0x000002732DEB1400>}
+             └ <function test_initialize_app_not_found at 0x000002732DE65A60>
+  File "D:\api\.venv\Lib\site-packages\pytest_asyncio\plugin.py", line 905, in inner
+    runner.run(coro, context=context)
+    │      │   │             └ <_contextvars.Context object at 0x000002732DF32400>
+    │      │   └ <coroutine object test_initialize_app_not_found at 0x000002732DE84890>
+    │      └ <function Runner.run at 0x000002732A54D010>
+    └ <asyncio.runners.Runner object at 0x000002732DEB1010>
+  File "C:\Python314\Lib\asyncio\runners.py", line 128, in run
+    return self._loop.run_until_complete(task)
+           │    │     │                  └ <Task pending name='Task-2' coro=<test_initialize_app_not_found() running at D:\api\tests\integration\test_app_endpoints.py:6...
+           │    │     └ <function BaseEventLoop.run_until_complete at 0x000002732A541380>
+           │    └ <ProactorEventLoop running=True closed=False debug=False>
+           └ <asyncio.runners.Runner object at 0x000002732DEB1010>
+  File "C:\Python314\Lib\asyncio\base_events.py", line 706, in run_until_complete
+    self.run_forever()
+    │    └ <function BaseEventLoop.run_forever at 0x000002732A5412D0>
+    └ <ProactorEventLoop running=True closed=False debug=False>
+  File "C:\Python314\Lib\asyncio\base_events.py", line 677, in run_forever
+    self._run_once()
+    │    └ <function BaseEventLoop._run_once at 0x000002732A5433D0>
+    └ <ProactorEventLoop running=True closed=False debug=False>
+  File "C:\Python314\Lib\asyncio\base_events.py", line 2056, in _run_once
+    handle._run()
+    │      └ <function Handle._run at 0x000002732A452F00>
+    └ <Handle Task.task_wakeup()>
+  File "C:\Python314\Lib\asyncio\events.py", line 94, in _run
+    self._context.run(self._callback, *self._args)
+    │    │            │    │           │    └ <member '_args' of 'Handle' objects>
+    │    │            │    │           └ <Handle Task.task_wakeup()>
+    │    │            │    └ <member '_callback' of 'Handle' objects>
+    │    │            └ <Handle Task.task_wakeup()>
+    │    └ <member '_context' of 'Handle' objects>
+    └ <Handle Task.task_wakeup()>
+
+  File "D:\api\tests\integration\test_app_endpoints.py", line 6, in test_initialize_app_not_found
+    response = await async_client.post(
+                     │            └ <function AsyncClient.post at 0x000002732A91FD70>
+                     └ <httpx.AsyncClient object at 0x000002732DEB1400>
+
+  File "D:\api\.venv\Lib\site-packages\httpx\_client.py", line 1859, in post
+    return await self.request(
+                 │    └ <function AsyncClient.request at 0x000002732A91F060>
+                 └ <httpx.AsyncClient object at 0x000002732DEB1400>
+  File "D:\api\.venv\Lib\site-packages\httpx\_client.py", line 1540, in request
+    return await self.send(request, auth=auth, follow_redirects=follow_redirects)
+                 │    │    │             │                      └ <httpx._client.UseClientDefault object at 0x000002732A84A3C0>
+                 │    │    │             └ <httpx._client.UseClientDefault object at 0x000002732A84A3C0>
+                 │    │    └ <Request('POST', 'http://test/api/v1/app/initialize')>
+                 │    └ <function AsyncClient.send at 0x000002732A91F3D0>
+                 └ <httpx.AsyncClient object at 0x000002732DEB1400>
+  File "D:\api\.venv\Lib\site-packages\httpx\_client.py", line 1629, in send
+    response = await self._send_handling_auth(
+                     │    └ <function AsyncClient._send_handling_auth at 0x000002732A91F530>
+                     └ <httpx.AsyncClient object at 0x000002732DEB1400>
+  File "D:\api\.venv\Lib\site-packages\httpx\_client.py", line 1657, in _send_handling_auth
+    response = await self._send_handling_redirects(
+                     │    └ <function AsyncClient._send_handling_redirects at 0x000002732A91F690>
+                     └ <httpx.AsyncClient object at 0x000002732DEB1400>
+  File "D:\api\.venv\Lib\site-packages\httpx\_client.py", line 1694, in _send_handling_redirects
+    response = await self._send_single_request(request)
+                     │    │                    └ <Request('POST', 'http://test/api/v1/app/initialize')>
+                     │    └ <function AsyncClient._send_single_request at 0x000002732A91F7F0>
+                     └ <httpx.AsyncClient object at 0x000002732DEB1400>
+  File "D:\api\.venv\Lib\site-packages\httpx\_client.py", line 1730, in _send_single_request
+    response = await transport.handle_async_request(request)
+                     │         │                    └ <Request('POST', 'http://test/api/v1/app/initialize')>
+                     │         └ <function ASGITransport.handle_async_request at 0x000002732A906E50>
+                     └ <httpx.ASGITransport object at 0x000002732DEB0EC0>
+  File "D:\api\.venv\Lib\site-packages\httpx\_transports\asgi.py", line 170, in handle_async_request
+    await self.app(scope, receive, send)
+          │    │   │      │        └ <function ASGITransport.handle_async_request.<locals>.send at 0x000002732DE66560>
+          │    │   │      └ <function ASGITransport.handle_async_request.<locals>.receive at 0x000002732DE66090>
+          │    │   └ {'type': 'http', 'asgi': {'version': '3.0'}, 'http_version': '1.1', 'method': 'POST', 'headers': [(b'host', b'test'), (b'acce...
+          │    └ <fastapi.applications.FastAPI object at 0x000002732C1FC6E0>
+          └ <httpx.ASGITransport object at 0x000002732DEB0EC0>
+  File "D:\api\.venv\Lib\site-packages\fastapi\applications.py", line 1163, in __call__
+    await super().__call__(scope, receive, send)
+                           │      │        └ <function ASGITransport.handle_async_request.<locals>.send at 0x000002732DE66560>
+                           │      └ <function ASGITransport.handle_async_request.<locals>.receive at 0x000002732DE66090>
+                           └ {'type': 'http', 'asgi': {'version': '3.0'}, 'http_version': '1.1', 'method': 'POST', 'headers': [(b'host', b'test'), (b'acce...
+  File "D:\api\.venv\Lib\site-packages\starlette\applications.py", line 90, in __call__
+    await self.middleware_stack(scope, receive, send)
+          │    │                │      │        └ <function ASGITransport.handle_async_request.<locals>.send at 0x000002732DE66560>
+          │    │                │      └ <function ASGITransport.handle_async_request.<locals>.receive at 0x000002732DE66090>
+          │    │                └ {'type': 'http', 'asgi': {'version': '3.0'}, 'http_version': '1.1', 'method': 'POST', 'headers': [(b'host', b'test'), (b'acce...
+          │    └ <starlette.middleware.errors.ServerErrorMiddleware object at 0x000002732DEB2660>
+          └ <fastapi.applications.FastAPI object at 0x000002732C1FC6E0>
+> File "D:\api\.venv\Lib\site-packages\starlette\middleware\errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+          │    │   │      │        └ <function ServerErrorMiddleware.__call__.<locals>._send at 0x000002732DE666C0>
+          │    │   │      └ <function ASGITransport.handle_async_request.<locals>.receive at 0x000002732DE66090>
+          │    │   └ {'type': 'http', 'asgi': {'version': '3.0'}, 'http_version': '1.1', 'method': 'POST', 'headers': [(b'host', b'test'), (b'acce...
+          │    └ <app.middleware.logging.LoggingMiddleware object at 0x000002732DEB2510>
+          └ <starlette.middleware.errors.ServerErrorMiddleware object at 0x000002732DEB2660>
+  File "D:\api\.venv\Lib\site-packages\starlette\middleware\base.py", line 193, in __call__
+    response = await self.dispatch_func(request, call_next)
+                     │    │             │        └ <function BaseHTTPMiddleware.__call__.<locals>.call_next at 0x000002732DE66820>
+                     │    │             └ <starlette.middleware.base._CachedRequest object at 0x000002732DEB27B0>
+                     │    └ <bound method LoggingMiddleware.dispatch of <app.middleware.logging.LoggingMiddleware object at 0x000002732DEB2510>>
+                     └ <app.middleware.logging.LoggingMiddleware object at 0x000002732DEB2510>
+
+  File "D:\api\app\middleware\logging.py", line 13, in dispatch
+    response = await call_next(request)
+                     │         └ <starlette.middleware.base._CachedRequest object at 0x000002732DEB27B0>
+                     └ <function BaseHTTPMiddleware.__call__.<locals>.call_next at 0x000002732DE66820>
+
+  File "D:\api\.venv\Lib\site-packages\starlette\middleware\base.py", line 168, in call_next
+    raise app_exc from app_exc.__cause__ or app_exc.__context__
+          │            │       │            │       └ <attribute '__context__' of 'BaseException' objects>
+          │            │       │            └ AttributeError("type object 'Application' has no attribute 'branches'")
+          │            │       └ <attribute '__cause__' of 'BaseException' objects>
+          │            └ AttributeError("type object 'Application' has no attribute 'branches'")
+          └ AttributeError("type object 'Application' has no attribute 'branches'")
+  File "D:\api\.venv\Lib\site-packages\starlette\middleware\base.py", line 144, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+          │    │   │      │                      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.send_no_error at 0x000002732DE66B90>
+          │    │   │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x000002732DE66A30>
+          │    │   └ {'type': 'http', 'asgi': {'version': '3.0'}, 'http_version': '1.1', 'method': 'POST', 'headers': [(b'host', b'test'), (b'acce...
+          │    └ <starlette.middleware.cors.CORSMiddleware object at 0x000002732DEB23C0>
+          └ <app.middleware.logging.LoggingMiddleware object at 0x000002732DEB2510>
+  File "D:\api\.venv\Lib\site-packages\starlette\middleware\cors.py", line 88, in __call__
+    await self.app(scope, receive, send)
+          │    │   │      │        └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.send_no_error at 0x000002732DE66B90>
+          │    │   │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x000002732DE66A30>
+          │    │   └ {'type': 'http', 'asgi': {'version': '3.0'}, 'http_version': '1.1', 'method': 'POST', 'headers': [(b'host', b'test'), (b'acce...
+          │    └ <starlette.middleware.exceptions.ExceptionMiddleware object at 0x000002732DEB2270>
+          └ <starlette.middleware.cors.CORSMiddleware object at 0x000002732DEB23C0>
+  File "D:\api\.venv\Lib\site-packages\starlette\middleware\exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+          │                            │    │    │     │      │        └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.send_no_error at 0x000002732DE66B90>
+          │                            │    │    │     │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x000002732DE66A30>
+          │                            │    │    │     └ {'type': 'http', 'asgi': {'version': '3.0'}, 'http_version': '1.1', 'method': 'POST', 'headers': [(b'host', b'test'), (b'acce...
+          │                            │    │    └ <starlette.requests.Request object at 0x000002732DEB3230>
+          │                            │    └ <fastapi.middleware.asyncexitstack.AsyncExitStackMiddleware object at 0x000002732DEB2120>
+          │                            └ <starlette.middleware.exceptions.ExceptionMiddleware object at 0x000002732DEB2270>
+          └ <function wrap_app_handling_exceptions at 0x000002732C0A5380>
+  File "D:\api\.venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\api\.venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+          │   │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x000002732DE67110>
+          │   │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x000002732DE66A30>
+          │   └ {'type': 'http', 'asgi': {'version': '3.0'}, 'http_version': '1.1', 'method': 'POST', 'headers': [(b'host', b'test'), (b'acce...
+          └ <fastapi.middleware.asyncexitstack.AsyncExitStackMiddleware object at 0x000002732DEB2120>
+  File "D:\api\.venv\Lib\site-packages\fastapi\middleware\asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+          │    │   │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x000002732DE67110>
+          │    │   │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x000002732DE66A30>
+          │    │   └ {'type': 'http', 'asgi': {'version': '3.0'}, 'http_version': '1.1', 'method': 'POST', 'headers': [(b'host', b'test'), (b'acce...
+          │    └ <fastapi.routing.APIRouter object at 0x000002732DC92BE0>
+          └ <fastapi.middleware.asyncexitstack.AsyncExitStackMiddleware object at 0x000002732DEB2120>
+  File "D:\api\.venv\Lib\site-packages\starlette\routing.py", line 660, in __call__
+    await self.middleware_stack(scope, receive, send)
+          │    │                │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x000002732DE67110>
+          │    │                │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x000002732DE66A30>
+          │    │                └ {'type': 'http', 'asgi': {'version': '3.0'}, 'http_version': '1.1', 'method': 'POST', 'headers': [(b'host', b'test'), (b'acce...
+          │    └ <bound method APIRouter.app of <fastapi.routing.APIRouter object at 0x000002732DC92BE0>>
+          └ <fastapi.routing.APIRouter object at 0x000002732DC92BE0>
+  File "D:\api\.venv\Lib\site-packages\fastapi\routing.py", line 2683, in app
+    await route.handle(scope, receive, send)
+          │     │      │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x000002732DE67110>
+          │     │      │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x000002732DE66A30>
+          │     │      └ {'type': 'http', 'asgi': {'version': '3.0'}, 'http_version': '1.1', 'method': 'POST', 'headers': [(b'host', b'test'), (b'acce...
+          │     └ <function _IncludedRouter.handle at 0x000002732C0FA400>
+          └ _IncludedRouter(original_router=<fastapi.routing.APIRouter object at 0x000002732DC91040>, include_context=_RouterIncludeConte...
+  File "D:\api\.venv\Lib\site-packages\fastapi\routing.py", line 1753, in handle
+    await self.original_router.handle(scope, receive, send)
+          │    │               │      │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x000002732DE67110>
+          │    │               │      │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x000002732DE66A30>
+          │    │               │      └ {'type': 'http', 'asgi': {'version': '3.0'}, 'http_version': '1.1', 'method': 'POST', 'headers': [(b'host', b'test'), (b'acce...
+          │    │               └ <function APIRouter.handle at 0x000002732C106610>
+          │    └ <fastapi.routing.APIRouter object at 0x000002732DC91040>
+          └ _IncludedRouter(original_router=<fastapi.routing.APIRouter object at 0x000002732DC91040>, include_context=_RouterIncludeConte...
+  File "D:\api\.venv\Lib\site-packages\fastapi\routing.py", line 2738, in handle
+    await included_router._handle_selected(scope, receive, send)
+          │               │                │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x000002732DE67110>
+          │               │                │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x000002732DE66A30>
+          │               │                └ {'type': 'http', 'asgi': {'version': '3.0'}, 'http_version': '1.1', 'method': 'POST', 'headers': [(b'host', b'test'), (b'acce...
+          │               └ <function _IncludedRouter._handle_selected at 0x000002732C0FA560>
+          └ _IncludedRouter(original_router=<fastapi.routing.APIRouter object at 0x000002732DC91040>, include_context=_RouterIncludeConte...
+  File "D:\api\.venv\Lib\site-packages\fastapi\routing.py", line 1764, in _handle_selected
+    await route.handle(scope, receive, send)
+          │     │      │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x000002732DE67110>
+          │     │      │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x000002732DE66A30>
+          │     │      └ {'type': 'http', 'asgi': {'version': '3.0'}, 'http_version': '1.1', 'method': 'POST', 'headers': [(b'host', b'test'), (b'acce...
+          │     └ <function _IncludedRouter.handle at 0x000002732C0FA400>
+          └ _IncludedRouter(original_router=<fastapi.routing.APIRouter object at 0x000002732D643250>, include_context=_RouterIncludeConte...
+  File "D:\api\.venv\Lib\site-packages\fastapi\routing.py", line 1753, in handle
+    await self.original_router.handle(scope, receive, send)
+          │    │               │      │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x000002732DE67110>
+          │    │               │      │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x000002732DE66A30>
+          │    │               │      └ {'type': 'http', 'asgi': {'version': '3.0'}, 'http_version': '1.1', 'method': 'POST', 'headers': [(b'host', b'test'), (b'acce...
+          │    │               └ <function APIRouter.handle at 0x000002732C106610>
+          │    └ <fastapi.routing.APIRouter object at 0x000002732D643250>
+          └ _IncludedRouter(original_router=<fastapi.routing.APIRouter object at 0x000002732D643250>, include_context=_RouterIncludeConte...
+  File "D:\api\.venv\Lib\site-packages\fastapi\routing.py", line 2738, in handle
+    await included_router._handle_selected(scope, receive, send)
+          │               │                │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x000002732DE67110>
+          │               │                │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x000002732DE66A30>
+          │               │                └ {'type': 'http', 'asgi': {'version': '3.0'}, 'http_version': '1.1', 'method': 'POST', 'headers': [(b'host', b'test'), (b'acce...
+          │               └ <function _IncludedRouter._handle_selected at 0x000002732C0FA560>
+          └ _IncludedRouter(original_router=<fastapi.routing.APIRouter object at 0x000002732D643250>, include_context=_RouterIncludeConte...
+  File "D:\api\.venv\Lib\site-packages\fastapi\routing.py", line 1773, in _handle_selected
+    await original_route.handle(scope, receive, send)
+          │              │      │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x000002732DE67110>
+          │              │      │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x000002732DE66A30>
+          │              │      └ {'type': 'http', 'asgi': {'version': '3.0'}, 'http_version': '1.1', 'method': 'POST', 'headers': [(b'host', b'test'), (b'acce...
+          │              └ <function APIRoute.handle at 0x000002732C0D7320>
+          └ APIRoute(path='/initialize', name='initialize_app', methods=['POST'])
+  File "D:\api\.venv\Lib\site-packages\fastapi\routing.py", line 1264, in handle
+    await app(scope, receive, send)
+          │   │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x000002732DE67110>
+          │   │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x000002732DE66A30>
+          │   └ {'type': 'http', 'asgi': {'version': '3.0'}, 'http_version': '1.1', 'method': 'POST', 'headers': [(b'host', b'test'), (b'acce...
+          └ <function request_response.<locals>.app at 0x000002732DE67CC0>
+  File "D:\api\.venv\Lib\site-packages\fastapi\routing.py", line 150, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+          │                            │    │        │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x000002732DE67110>
+          │                            │    │        │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x000002732DE66A30>
+          │                            │    │        └ {'type': 'http', 'asgi': {'version': '3.0'}, 'http_version': '1.1', 'method': 'POST', 'headers': [(b'host', b'test'), (b'acce...
+          │                            │    └ <starlette.requests.Request object at 0x000002732DEA5810>
+          │                            └ <function request_response.<locals>.app.<locals>.app at 0x000002732DE97690>
+          └ <function wrap_app_handling_exceptions at 0x000002732C0A5380>
+  File "D:\api\.venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\api\.venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+          │   │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x000002732DE97A00>
+          │   │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x000002732DE66A30>
+          │   └ {'type': 'http', 'asgi': {'version': '3.0'}, 'http_version': '1.1', 'method': 'POST', 'headers': [(b'host', b'test'), (b'acce...
+          └ <function request_response.<locals>.app.<locals>.app at 0x000002732DE97690>
+  File "D:\api\.venv\Lib\site-packages\fastapi\routing.py", line 136, in app
+    response = await f(request)
+                     │ └ <starlette.requests.Request object at 0x000002732DEA5810>
+                     └ <function get_request_handler.<locals>.app at 0x000002732DE67B60>
+  File "D:\api\.venv\Lib\site-packages\fastapi\routing.py", line 690, in app
+    raw_response = await run_endpoint_function(
+                         └ <function run_endpoint_function at 0x000002732C0D5850>
+  File "D:\api\.venv\Lib\site-packages\fastapi\routing.py", line 344, in run_endpoint_function
+    return await dependant.call(**values)
+                 │         │      └ {'db': <sqlalchemy.ext.asyncio.session.AsyncSession object at 0x000002732DEB3E00>, 'request': AppInitializeRequest(app_key='i...
+                 │         └ <function initialize_app at 0x000002732D603480>
+                 └ Dependant(path_params=[], query_params=[], header_params=[], cookie_params=[], body_params=[ModelField(field_info=Body(Pydant...
+
+  File "D:\api\app\api\v1\app.py", line 25, in initialize_app
+    return await application_service.initialize(db, request.app_key)
+                 │                   │          │   │       └ 'invalid_key'
+                 │                   │          │   └ AppInitializeRequest(app_key='invalid_key')
+                 │                   │          └ <sqlalchemy.ext.asyncio.session.AsyncSession object at 0x000002732DEB3E00>
+                 │                   └ <function ApplicationService.initialize at 0x000002732D4C9640>
+                 └ <app.services.application.ApplicationService object at 0x000002732D5BE3C0>
+
+  File "D:\api\app\services\application.py", line 12, in initialize
+    app = await application_repo.get_by_app_key(db, app_key)
+                │                │              │   └ 'invalid_key'
+                │                │              └ <sqlalchemy.ext.asyncio.session.AsyncSession object at 0x000002732DEB3E00>
+                │                └ <function ApplicationRepository.get_by_app_key at 0x000002732D603320>
+                └ <app.repositories.application.ApplicationRepository object at 0x000002732D5BE270>
+
+  File "D:\api\app\repositories\application.py", line 16, in get_by_app_key
+    .options(joinedload(Application.restaurant).joinedload(Application.restaurant.class_.branches))
+             │          │           │                      │           │          └ <member 'class_' of 'QueryableAttribute' objects>
+             │          │           │                      │           └ <sqlalchemy.orm.attributes.InstrumentedAttribute object at 0x000002732D4FFE20>
+             │          │           │                      └ <class 'app.models.application.Application'>
+             │          │           └ <sqlalchemy.orm.attributes.InstrumentedAttribute object at 0x000002732D4FFE20>
+             │          └ <class 'app.models.application.Application'>
+             └ <function joinedload at 0x000002732D1790C0>
+
+AttributeError: type object 'Application' has no attribute 'branches'
+2026-07-06 21:04:48.417 | ERROR    | app.core.exceptions:global_exception_handler:49 - Database Error: (sqlite3.OperationalError) no such table: otp_codes
+[SQL: DELETE FROM otp_codes WHERE otp_codes.phone_number = ?]
+[parameters: ('+1234567890',)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8) - Path: /api/v1/auth/request-otp
+2026-07-06 21:04:48.431 | ERROR    | app.core.exceptions:global_exception_handler:49 - Database Error: (sqlite3.OperationalError) no such table: otp_codes
+[SQL: SELECT otp_codes.id, otp_codes.phone_number, otp_codes.code, otp_codes.expires_at, otp_codes.created_at, otp_codes.updated_at 
+FROM otp_codes 
+WHERE otp_codes.phone_number = ? AND otp_codes.code = ? AND otp_codes.expires_at > ?]
+[parameters: ('+1234567890', '000000', '2026-07-06 18:04:48.427189')]
+(Background on this error at: https://sqlalche.me/e/20/e3q8) - Path: /api/v1/auth/verify-otp
+2026-07-06 21:04:48.565 | ERROR    | app.core.exceptions:global_exception_handler:49 - Database Error: (sqlite3.OperationalError) no such table: categories
+[SQL: SELECT count(*) AS count_1 
+FROM (SELECT categories.id AS id, categories.restaurant_id AS restaurant_id, categories.name_ar AS name_ar, categories.name_en AS name_en, categories.image AS image, categories.sort_order AS sort_order, categories.is_active AS is_active, categories.created_at AS created_at, categories.updated_at AS updated_at 
+FROM categories 
+WHERE categories.restaurant_id = ? AND categories.is_active = 1) AS anon_1]
+[parameters: (1,)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8) - Path: /api/v1/menu
+2026-07-06 21:04:48.590 | ERROR    | app.core.exceptions:global_exception_handler:49 - Database Error: (sqlite3.OperationalError) no such table: products
+[SQL: SELECT count(*) AS count_1 
+FROM (SELECT products.id AS id, products.restaurant_id AS restaurant_id, products.category_id AS category_id, products.name_ar AS name_ar, products.name_en AS name_en, products.description_ar AS description_ar, products.description_en AS description_en, products.image AS image, products.is_available AS is_available, products.is_featured AS is_featured, products.is_hidden AS is_hidden, products.is_offer AS is_offer, products.has_sizes AS has_sizes, products.has_addons AS has_addons, products.base_price AS base_price, products.preparation_time AS preparation_time, products.calories AS calories, products.sort_order AS sort_order, products.created_at AS created_at, products.updated_at AS updated_at 
+FROM products 
+WHERE products.restaurant_id = ? AND products.is_hidden = 0 AND products.is_available = 1 AND products.is_featured = 1) AS anon_1]
+[parameters: (1,)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8) - Path: /api/v1/products
+2026-07-06 21:04:48.748 | ERROR    | app.core.exceptions:global_exception_handler:49 - Database Error: (sqlite3.OperationalError) no such table: products
+[SQL: SELECT count(*) AS count_1 
+FROM (SELECT products.id AS id, products.restaurant_id AS restaurant_id, products.category_id AS category_id, products.name_ar AS name_ar, products.name_en AS name_en, products.description_ar AS description_ar, products.description_en AS description_en, products.image AS image, products.is_available AS is_available, products.is_featured AS is_featured, products.is_hidden AS is_hidden, products.is_offer AS is_offer, products.has_sizes AS has_sizes, products.has_addons AS has_addons, products.base_price AS base_price, products.preparation_time AS preparation_time, products.calories AS calories, products.sort_order AS sort_order, products.created_at AS created_at, products.updated_at AS updated_at 
+FROM products 
+WHERE products.restaurant_id = ? AND products.is_hidden = 0 AND products.is_available = 1) AS anon_1]
+[parameters: (1,)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8) - Path: /api/v1/products
+2026-07-06 21:04:48.759 | ERROR    | app.core.exceptions:global_exception_handler:49 - Database Error: (sqlite3.OperationalError) no such table: products
+[SQL: SELECT count(*) AS count_1 
+FROM (SELECT products.id AS id, products.restaurant_id AS restaurant_id, products.category_id AS category_id, products.name_ar AS name_ar, products.name_en AS name_en, products.description_ar AS description_ar, products.description_en AS description_en, products.image AS image, products.is_available AS is_available, products.is_featured AS is_featured, products.is_hidden AS is_hidden, products.is_offer AS is_offer, products.has_sizes AS has_sizes, products.has_addons AS has_addons, products.base_price AS base_price, products.preparation_time AS preparation_time, products.calories AS calories, products.sort_order AS sort_order, products.created_at AS created_at, products.updated_at AS updated_at 
+FROM products 
+WHERE products.restaurant_id = ? AND products.is_hidden = 0 AND products.is_available = 1 AND (lower(products.name_ar) LIKE lower(?) OR lower(products.name_en) LIKE lower(?))) AS anon_1]
+[parameters: (1, '%دجاج%', '%دجاج%')]
+(Background on this error at: https://sqlalche.me/e/20/e3q8) - Path: /api/v1/products
+2026-07-06 21:04:48.768 | ERROR    | app.core.exceptions:global_exception_handler:49 - Database Error: (sqlite3.OperationalError) no such table: categories
+[SQL: SELECT count(*) AS count_1 
+FROM (SELECT categories.id AS id, categories.restaurant_id AS restaurant_id, categories.name_ar AS name_ar, categories.name_en AS name_en, categories.image AS image, categories.sort_order AS sort_order, categories.is_active AS is_active, categories.created_at AS created_at, categories.updated_at AS updated_at 
+FROM categories 
+WHERE categories.restaurant_id = ? AND categories.is_active = 1) AS anon_1]
+[parameters: (1,)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8) - Path: /api/v1/categories
+2026-07-06 21:04:48.773 | ERROR    | app.core.exceptions:global_exception_handler:49 - Database Error: (sqlite3.OperationalError) no such table: categories
+[SQL: SELECT count(*) AS count_1 
+FROM (SELECT categories.id AS id, categories.restaurant_id AS restaurant_id, categories.name_ar AS name_ar, categories.name_en AS name_en, categories.image AS image, categories.sort_order AS sort_order, categories.is_active AS is_active, categories.created_at AS created_at, categories.updated_at AS updated_at 
+FROM categories 
+WHERE categories.restaurant_id = ? AND categories.is_active = 1) AS anon_1]
+[parameters: (1,)]
+(Background on this error at: https://sqlalche.me/e/20/e3q8) - Path: /api/v1/categories
+2026-07-06 21:06:26.033 | ERROR    | app.core.exceptions:global_exception_handler:56 - Unknown Error: type object 'Application' has no attribute 'branches' - Path: /api/v1/app/initialize
+Traceback (most recent call last):
+
+  File "<frozen runpy>", line 203, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+
+  File "D:\api\.venv\Scripts\pytest.exe\__main__.py", line 5, in <module>
+
+  File "D:\api\.venv\Lib\site-packages\_pytest\config\__init__.py", line 253, in _console_main
+    code = _main(prog=_get_prog_name(sys.argv))
+           │          │              │   └ ['D:\\api\\.venv\\Scripts\\pytest', '-o', 'asyncio_mode=auto', 'tests/integration/test_cart_endpoints.py', 'tests/integration...
+           │          │              └ <module 'sys' (built-in)>
+           │          └ <function _get_prog_name at 0x000001F5762BD010>
+           └ <function _main at 0x000001F5762BD2D0>
+  File "D:\api\.venv\Lib\site-packages\_pytest\config\__init__.py", line 229, in _main
+    ret: ExitCode | int = config.hook.pytest_cmdline_main(config=config)
+         │                │      │    │                          └ <_pytest.config.Config object at 0x000001F5764792B0>
+         │                │      │    └ <HookCaller 'pytest_cmdline_main'>
+         │                │      └ <pluggy._hooks.HookRelay object at 0x000001F57614F4D0>
+         │                └ <_pytest.config.Config object at 0x000001F5764792B0>
+         └ <enum 'ExitCode'>
+  File "D:\api\.venv\Lib\site-packages\pluggy\_hooks.py", line 512, in __call__
+    return self._hookexec(self.name, self._hookimpls.copy(), kwargs, firstresult)
+           │    │         │    │     │    │                  │       └ True
+           │    │         │    │     │    │                  └ {'config': <_pytest.config.Config object at 0x000001F5764792B0>}
+           │    │         │    │     │    └ <member '_hookimpls' of 'HookCaller' objects>
+           │    │         │    │     └ <HookCaller 'pytest_cmdline_main'>
+           │    │         │    └ <member 'name' of 'HookCaller' objects>
+           │    │         └ <HookCaller 'pytest_cmdline_main'>
+           │    └ <member '_hookexec' of 'HookCaller' objects>
+           └ <HookCaller 'pytest_cmdline_main'>
+  File "D:\api\.venv\Lib\site-packages\pluggy\_manager.py", line 120, in _hookexec
+    return self._inner_hookexec(hook_name, methods, kwargs, firstresult)
+           │    │               │          │        │       └ True
+           │    │               │          │        └ {'config': <_pytest.config.Config object at 0x000001F5764792B0>}
+           │    │               │          └ [<HookImpl plugin_name='main', plugin=<module '_pytest.main' from 'D:\\api\\.venv\\Lib\\site-packages\\_pytest\\main.py'>>, <...
+           │    │               └ 'pytest_cmdline_main'
+           │    └ <function _multicall at 0x000001F57603A610>
+           └ <_pytest.config.PytestPluginManager object at 0x000001F57614F230>
+  File "D:\api\.venv\Lib\site-packages\pluggy\_callers.py", line 121, in _multicall
+    res = hook_impl.function(*args)
+          │         │         └ [<_pytest.config.Config object at 0x000001F5764792B0>]
+          │         └ <member 'function' of 'HookImpl' objects>
+          └ <HookImpl plugin_name='main', plugin=<module '_pytest.main' from 'D:\\api\\.venv\\Lib\\site-packages\\_pytest\\main.py'>>
+  File "D:\api\.venv\Lib\site-packages\_pytest\main.py", line 377, in pytest_cmdline_main
+    return wrap_session(config, _main)
+           │            │       └ <function _main at 0x000001F576447AB0>
+           │            └ <_pytest.config.Config object at 0x000001F5764792B0>
+           └ <function wrap_session at 0x000001F5764477F0>
+  File "D:\api\.venv\Lib\site-packages\_pytest\main.py", line 330, in wrap_session
+    session.exitstatus = doit(config, session) or 0
+    │       │            │    │       └ <Session  exitstatus=<ExitCode.OK: 0> testsfailed=1 testscollected=6>
+    │       │            │    └ <_pytest.config.Config object at 0x000001F5764792B0>
+    │       │            └ <function _main at 0x000001F576447AB0>
+    │       └ <ExitCode.OK: 0>
+    └ <Session  exitstatus=<ExitCode.OK: 0> testsfailed=1 testscollected=6>
+  File "D:\api\.venv\Lib\site-packages\_pytest\main.py", line 384, in _main
+    config.hook.pytest_runtestloop(session=session)
+    │      │    │                          └ <Session  exitstatus=<ExitCode.OK: 0> testsfailed=1 testscollected=6>
+    │      │    └ <HookCaller 'pytest_runtestloop'>
+    │      └ <pluggy._hooks.HookRelay object at 0x000001F57614F4D0>
+    └ <_pytest.config.Config object at 0x000001F5764792B0>
+  File "D:\api\.venv\Lib\site-packages\pluggy\_hooks.py", line 512, in __call__
+    return self._hookexec(self.name, self._hookimpls.copy(), kwargs, firstresult)
+           │    │         │    │     │    │                  │       └ True
+           │    │         │    │     │    │                  └ {'session': <Session  exitstatus=<ExitCode.OK: 0> testsfailed=1 testscollected=6>}
+           │    │         │    │     │    └ <member '_hookimpls' of 'HookCaller' objects>
+           │    │         │    │     └ <HookCaller 'pytest_runtestloop'>
+           │    │         │    └ <member 'name' of 'HookCaller' objects>
+           │    │         └ <HookCaller 'pytest_runtestloop'>
+           │    └ <member '_hookexec' of 'HookCaller' objects>
+           └ <HookCaller 'pytest_runtestloop'>
+  File "D:\api\.venv\Lib\site-packages\pluggy\_manager.py", line 120, in _hookexec
+    return self._inner_hookexec(hook_name, methods, kwargs, firstresult)
+           │    │               │          │        │       └ True
+           │    │               │          │        └ {'session': <Session  exitstatus=<ExitCode.OK: 0> testsfailed=1 testscollected=6>}
+           │    │               │          └ [<HookImpl plugin_name='main', plugin=<module '_pytest.main' from 'D:\\api\\.venv\\Lib\\site-packages\\_pytest\\main.py'>>, <...
+           │    │               └ 'pytest_runtestloop'
+           │    └ <function _multicall at 0x000001F57603A610>
+           └ <_pytest.config.PytestPluginManager object at 0x000001F57614F230>
+  File "D:\api\.venv\Lib\site-packages\pluggy\_callers.py", line 121, in _multicall
+    res = hook_impl.function(*args)
+          │         │         └ [<Session  exitstatus=<ExitCode.OK: 0> testsfailed=1 testscollected=6>]
+          │         └ <member 'function' of 'HookImpl' objects>
+          └ <HookImpl plugin_name='main', plugin=<module '_pytest.main' from 'D:\\api\\.venv\\Lib\\site-packages\\_pytest\\main.py'>>
+  File "D:\api\.venv\Lib\site-packages\_pytest\main.py", line 408, in pytest_runtestloop
+    item.config.hook.pytest_runtest_protocol(item=item, nextitem=nextitem)
+    │    │                                        │              └ <Coroutine test_hub_heartbeat_unauthorized>
+    │    │                                        └ <Coroutine test_initialize_app_not_found>
+    │    └ <member 'config' of 'Node' objects>
+    └ <Coroutine test_initialize_app_not_found>
+  File "D:\api\.venv\Lib\site-packages\pluggy\_hooks.py", line 512, in __call__
+    return self._hookexec(self.name, self._hookimpls.copy(), kwargs, firstresult)
+           │    │         │    │     │    │                  │       └ True
+           │    │         │    │     │    │                  └ {'item': <Coroutine test_initialize_app_not_found>, 'nextitem': <Coroutine test_hub_heartbeat_unauthorized>}
+           │    │         │    │     │    └ <member '_hookimpls' of 'HookCaller' objects>
+           │    │         │    │     └ <HookCaller 'pytest_runtest_protocol'>
+           │    │         │    └ <member 'name' of 'HookCaller' objects>
+           │    │         └ <HookCaller 'pytest_runtest_protocol'>
+           │    └ <member '_hookexec' of 'HookCaller' objects>
+           └ <HookCaller 'pytest_runtest_protocol'>
+  File "D:\api\.venv\Lib\site-packages\pluggy\_manager.py", line 120, in _hookexec
+    return self._inner_hookexec(hook_name, methods, kwargs, firstresult)
+           │    │               │          │        │       └ True
+           │    │               │          │        └ {'item': <Coroutine test_initialize_app_not_found>, 'nextitem': <Coroutine test_hub_heartbeat_unauthorized>}
+           │    │               │          └ [<HookImpl plugin_name='runner', plugin=<module '_pytest.runner' from 'D:\\api\\.venv\\Lib\\site-packages\\_pytest\\runner.py...
+           │    │               └ 'pytest_runtest_protocol'
+           │    └ <function _multicall at 0x000001F57603A610>
+           └ <_pytest.config.PytestPluginManager object at 0x000001F57614F230>
+  File "D:\api\.venv\Lib\site-packages\pluggy\_callers.py", line 121, in _multicall
+    res = hook_impl.function(*args)
+          │         │         └ [<Coroutine test_initialize_app_not_found>, <Coroutine test_hub_heartbeat_unauthorized>]
+          │         └ <member 'function' of 'HookImpl' objects>
+          └ <HookImpl plugin_name='runner', plugin=<module '_pytest.runner' from 'D:\\api\\.venv\\Lib\\site-packages\\_pytest\\runner.py'>>
+  File "D:\api\.venv\Lib\site-packages\_pytest\runner.py", line 118, in pytest_runtest_protocol
+    runtestprotocol(item, nextitem=nextitem)
+    │               │              └ <Coroutine test_hub_heartbeat_unauthorized>
+    │               └ <Coroutine test_initialize_app_not_found>
+    └ <function runtestprotocol at 0x000001F5764457A0>
+  File "D:\api\.venv\Lib\site-packages\_pytest\runner.py", line 139, in runtestprotocol
+    reports.append(call_and_report(item, "call", log))
+    │       │      │               │             └ True
+    │       │      │               └ <Coroutine test_initialize_app_not_found>
+    │       │      └ <function call_and_report at 0x000001F576446140>
+    │       └ <method 'append' of 'list' objects>
+    └ [<TestReport 'tests/integration/test_app_endpoints.py::test_initialize_app_not_found' when='setup' outcome='passed'>]
+  File "D:\api\.venv\Lib\site-packages\_pytest\runner.py", line 249, in call_and_report
+    call = CallInfo.from_call(
+           │        └ <classmethod(<function CallInfo.from_call at 0x000001F5764468D0>)>
+           └ <class '_pytest.runner.CallInfo'>
+  File "D:\api\.venv\Lib\site-packages\_pytest\runner.py", line 361, in from_call
+    result: TResult | None = func()
+            │                └ <function call_and_report.<locals>.<lambda> at 0x000001F57C31B8A0>
+            └ +TResult
+  File "D:\api\.venv\Lib\site-packages\_pytest\runner.py", line 250, in <lambda>
+    lambda: runtest_hook(item=item, **kwds),
+            │                 │       └ {}
+            │                 └ <Coroutine test_initialize_app_not_found>
+            └ <HookCaller 'pytest_runtest_call'>
+  File "D:\api\.venv\Lib\site-packages\pluggy\_hooks.py", line 512, in __call__
+    return self._hookexec(self.name, self._hookimpls.copy(), kwargs, firstresult)
+           │    │         │    │     │    │                  │       └ False
+           │    │         │    │     │    │                  └ {'item': <Coroutine test_initialize_app_not_found>}
+           │    │         │    │     │    └ <member '_hookimpls' of 'HookCaller' objects>
+           │    │         │    │     └ <HookCaller 'pytest_runtest_call'>
+           │    │         │    └ <member 'name' of 'HookCaller' objects>
+           │    │         └ <HookCaller 'pytest_runtest_call'>
+           │    └ <member '_hookexec' of 'HookCaller' objects>
+           └ <HookCaller 'pytest_runtest_call'>
+  File "D:\api\.venv\Lib\site-packages\pluggy\_manager.py", line 120, in _hookexec
+    return self._inner_hookexec(hook_name, methods, kwargs, firstresult)
+           │    │               │          │        │       └ False
+           │    │               │          │        └ {'item': <Coroutine test_initialize_app_not_found>}
+           │    │               │          └ [<HookImpl plugin_name='threadexception', plugin=<module '_pytest.threadexception' from 'D:\\api\\.venv\\Lib\\site-packages\\...
+           │    │               └ 'pytest_runtest_call'
+           │    └ <function _multicall at 0x000001F57603A610>
+           └ <_pytest.config.PytestPluginManager object at 0x000001F57614F230>
+  File "D:\api\.venv\Lib\site-packages\pluggy\_callers.py", line 121, in _multicall
+    res = hook_impl.function(*args)
+          │         │         └ [<Coroutine test_initialize_app_not_found>]
+          │         └ <member 'function' of 'HookImpl' objects>
+          └ <HookImpl plugin_name='runner', plugin=<module '_pytest.runner' from 'D:\\api\\.venv\\Lib\\site-packages\\_pytest\\runner.py'>>
+  File "D:\api\.venv\Lib\site-packages\_pytest\runner.py", line 184, in pytest_runtest_call
+    item.runtest()
+    │    └ <function PytestAsyncioFunction.runtest at 0x000001F578D16560>
+    └ <Coroutine test_initialize_app_not_found>
+  File "D:\api\.venv\Lib\site-packages\pytest_asyncio\plugin.py", line 569, in runtest
+    super().runtest()
+  File "D:\api\.venv\Lib\site-packages\_pytest\python.py", line 1707, in runtest
+    self.ihook.pytest_pyfunc_call(pyfuncitem=self)
+    │    │                                   └ <Coroutine test_initialize_app_not_found>
+    │    └ <property object at 0x000001F5763D8680>
+    └ <Coroutine test_initialize_app_not_found>
+  File "D:\api\.venv\Lib\site-packages\pluggy\_hooks.py", line 512, in __call__
+    return self._hookexec(self.name, self._hookimpls.copy(), kwargs, firstresult)
+           │    │         │    │     │    │                  │       └ True
+           │    │         │    │     │    │                  └ {'pyfuncitem': <Coroutine test_initialize_app_not_found>}
+           │    │         │    │     │    └ <member '_hookimpls' of 'HookCaller' objects>
+           │    │         │    │     └ <HookCaller 'pytest_pyfunc_call'>
+           │    │         │    └ <member 'name' of 'HookCaller' objects>
+           │    │         └ <HookCaller 'pytest_pyfunc_call'>
+           │    └ <member '_hookexec' of 'HookCaller' objects>
+           └ <HookCaller 'pytest_pyfunc_call'>
+  File "D:\api\.venv\Lib\site-packages\pluggy\_manager.py", line 120, in _hookexec
+    return self._inner_hookexec(hook_name, methods, kwargs, firstresult)
+           │    │               │          │        │       └ True
+           │    │               │          │        └ {'pyfuncitem': <Coroutine test_initialize_app_not_found>}
+           │    │               │          └ [<HookImpl plugin_name='python', plugin=<module '_pytest.python' from 'D:\\api\\.venv\\Lib\\site-packages\\_pytest\\python.py...
+           │    │               └ 'pytest_pyfunc_call'
+           │    └ <function _multicall at 0x000001F57603A610>
+           └ <_pytest.config.PytestPluginManager object at 0x000001F57614F230>
+  File "D:\api\.venv\Lib\site-packages\pluggy\_callers.py", line 121, in _multicall
+    res = hook_impl.function(*args)
+          │         │         └ [<Coroutine test_initialize_app_not_found>]
+          │         └ <member 'function' of 'HookImpl' objects>
+          └ <HookImpl plugin_name='python', plugin=<module '_pytest.python' from 'D:\\api\\.venv\\Lib\\site-packages\\_pytest\\python.py'>>
+  File "D:\api\.venv\Lib\site-packages\_pytest\python.py", line 167, in pytest_pyfunc_call
+    result = testfunction(**testargs)
+             │              └ {'async_client': <httpx.AsyncClient object at 0x000001F57C429BD0>}
+             └ <function test_initialize_app_not_found at 0x000001F57C480BF0>
+  File "D:\api\.venv\Lib\site-packages\pytest_asyncio\plugin.py", line 905, in inner
+    runner.run(coro, context=context)
+    │      │   │             └ <_contextvars.Context object at 0x000001F57BBAACC0>
+    │      │   └ <coroutine object test_initialize_app_not_found at 0x000001F57C3B1210>
+    │      └ <function Runner.run at 0x000001F578B81010>
+    └ <asyncio.runners.Runner object at 0x000001F57C4A3C50>
+  File "C:\Python314\Lib\asyncio\runners.py", line 128, in run
+    return self._loop.run_until_complete(task)
+           │    │     │                  └ <Task pending name='Task-12' coro=<test_initialize_app_not_found() running at D:\api\tests\integration\test_app_endpoints.py:...
+           │    │     └ <function BaseEventLoop.run_until_complete at 0x000001F578B75380>
+           │    └ <ProactorEventLoop running=True closed=False debug=False>
+           └ <asyncio.runners.Runner object at 0x000001F57C4A3C50>
+  File "C:\Python314\Lib\asyncio\base_events.py", line 706, in run_until_complete
+    self.run_forever()
+    │    └ <function BaseEventLoop.run_forever at 0x000001F578B752D0>
+    └ <ProactorEventLoop running=True closed=False debug=False>
+  File "C:\Python314\Lib\asyncio\base_events.py", line 677, in run_forever
+    self._run_once()
+    │    └ <function BaseEventLoop._run_once at 0x000001F578B773D0>
+    └ <ProactorEventLoop running=True closed=False debug=False>
+  File "C:\Python314\Lib\asyncio\base_events.py", line 2056, in _run_once
+    handle._run()
+    │      └ <function Handle._run at 0x000001F578A82F00>
+    └ <Handle Task.task_wakeup()>
+  File "C:\Python314\Lib\asyncio\events.py", line 94, in _run
+    self._context.run(self._callback, *self._args)
+    │    │            │    │           │    └ <member '_args' of 'Handle' objects>
+    │    │            │    │           └ <Handle Task.task_wakeup()>
+    │    │            │    └ <member '_callback' of 'Handle' objects>
+    │    │            └ <Handle Task.task_wakeup()>
+    │    └ <member '_context' of 'Handle' objects>
+    └ <Handle Task.task_wakeup()>
+
+  File "D:\api\tests\integration\test_app_endpoints.py", line 6, in test_initialize_app_not_found
+    response = await async_client.post(
+                     │            └ <function AsyncClient.post at 0x000001F578F53D70>
+                     └ <httpx.AsyncClient object at 0x000001F57C429BD0>
+
+  File "D:\api\.venv\Lib\site-packages\httpx\_client.py", line 1859, in post
+    return await self.request(
+                 │    └ <function AsyncClient.request at 0x000001F578F53060>
+                 └ <httpx.AsyncClient object at 0x000001F57C429BD0>
+  File "D:\api\.venv\Lib\site-packages\httpx\_client.py", line 1540, in request
+    return await self.send(request, auth=auth, follow_redirects=follow_redirects)
+                 │    │    │             │                      └ <httpx._client.UseClientDefault object at 0x000001F578E7A3C0>
+                 │    │    │             └ <httpx._client.UseClientDefault object at 0x000001F578E7A3C0>
+                 │    │    └ <Request('POST', 'http://test/api/v1/app/initialize')>
+                 │    └ <function AsyncClient.send at 0x000001F578F533D0>
+                 └ <httpx.AsyncClient object at 0x000001F57C429BD0>
+  File "D:\api\.venv\Lib\site-packages\httpx\_client.py", line 1629, in send
+    response = await self._send_handling_auth(
+                     │    └ <function AsyncClient._send_handling_auth at 0x000001F578F53530>
+                     └ <httpx.AsyncClient object at 0x000001F57C429BD0>
+  File "D:\api\.venv\Lib\site-packages\httpx\_client.py", line 1657, in _send_handling_auth
+    response = await self._send_handling_redirects(
+                     │    └ <function AsyncClient._send_handling_redirects at 0x000001F578F53690>
+                     └ <httpx.AsyncClient object at 0x000001F57C429BD0>
+  File "D:\api\.venv\Lib\site-packages\httpx\_client.py", line 1694, in _send_handling_redirects
+    response = await self._send_single_request(request)
+                     │    │                    └ <Request('POST', 'http://test/api/v1/app/initialize')>
+                     │    └ <function AsyncClient._send_single_request at 0x000001F578F537F0>
+                     └ <httpx.AsyncClient object at 0x000001F57C429BD0>
+  File "D:\api\.venv\Lib\site-packages\httpx\_client.py", line 1730, in _send_single_request
+    response = await transport.handle_async_request(request)
+                     │         │                    └ <Request('POST', 'http://test/api/v1/app/initialize')>
+                     │         └ <function ASGITransport.handle_async_request at 0x000001F578F36E50>
+                     └ <httpx.ASGITransport object at 0x000001F57C4A3750>
+  File "D:\api\.venv\Lib\site-packages\httpx\_transports\asgi.py", line 170, in handle_async_request
+    await self.app(scope, receive, send)
+          │    │   │      │        └ <function ASGITransport.handle_async_request.<locals>.send at 0x000001F57C480250>
+          │    │   │      └ <function ASGITransport.handle_async_request.<locals>.receive at 0x000001F57C481C70>
+          │    │   └ {'type': 'http', 'asgi': {'version': '3.0'}, 'http_version': '1.1', 'method': 'POST', 'headers': [(b'host', b'test'), (b'acce...
+          │    └ <fastapi.applications.FastAPI object at 0x000001F57A82C6E0>
+          └ <httpx.ASGITransport object at 0x000001F57C4A3750>
+  File "D:\api\.venv\Lib\site-packages\fastapi\applications.py", line 1163, in __call__
+    await super().__call__(scope, receive, send)
+                           │      │        └ <function ASGITransport.handle_async_request.<locals>.send at 0x000001F57C480250>
+                           │      └ <function ASGITransport.handle_async_request.<locals>.receive at 0x000001F57C481C70>
+                           └ {'type': 'http', 'asgi': {'version': '3.0'}, 'http_version': '1.1', 'method': 'POST', 'headers': [(b'host', b'test'), (b'acce...
+  File "D:\api\.venv\Lib\site-packages\starlette\applications.py", line 90, in __call__
+    await self.middleware_stack(scope, receive, send)
+          │    │                │      │        └ <function ASGITransport.handle_async_request.<locals>.send at 0x000001F57C480250>
+          │    │                │      └ <function ASGITransport.handle_async_request.<locals>.receive at 0x000001F57C481C70>
+          │    │                └ {'type': 'http', 'asgi': {'version': '3.0'}, 'http_version': '1.1', 'method': 'POST', 'headers': [(b'host', b'test'), (b'acce...
+          │    └ <starlette.middleware.errors.ServerErrorMiddleware object at 0x000001F57C4A6270>
+          └ <fastapi.applications.FastAPI object at 0x000001F57A82C6E0>
+> File "D:\api\.venv\Lib\site-packages\starlette\middleware\errors.py", line 164, in __call__
+    await self.app(scope, receive, _send)
+          │    │   │      │        └ <function ServerErrorMiddleware.__call__.<locals>._send at 0x000001F57C481D20>
+          │    │   │      └ <function ASGITransport.handle_async_request.<locals>.receive at 0x000001F57C481C70>
+          │    │   └ {'type': 'http', 'asgi': {'version': '3.0'}, 'http_version': '1.1', 'method': 'POST', 'headers': [(b'host', b'test'), (b'acce...
+          │    └ <app.middleware.logging.LoggingMiddleware object at 0x000001F57C4A6120>
+          └ <starlette.middleware.errors.ServerErrorMiddleware object at 0x000001F57C4A6270>
+  File "D:\api\.venv\Lib\site-packages\starlette\middleware\base.py", line 193, in __call__
+    response = await self.dispatch_func(request, call_next)
+                     │    │             │        └ <function BaseHTTPMiddleware.__call__.<locals>.call_next at 0x000001F57C482B90>
+                     │    │             └ <starlette.middleware.base._CachedRequest object at 0x000001F57C42A490>
+                     │    └ <bound method LoggingMiddleware.dispatch of <app.middleware.logging.LoggingMiddleware object at 0x000001F57C4A6120>>
+                     └ <app.middleware.logging.LoggingMiddleware object at 0x000001F57C4A6120>
+
+  File "D:\api\app\middleware\logging.py", line 13, in dispatch
+    response = await call_next(request)
+                     │         └ <starlette.middleware.base._CachedRequest object at 0x000001F57C42A490>
+                     └ <function BaseHTTPMiddleware.__call__.<locals>.call_next at 0x000001F57C482B90>
+
+  File "D:\api\.venv\Lib\site-packages\starlette\middleware\base.py", line 168, in call_next
+    raise app_exc from app_exc.__cause__ or app_exc.__context__
+          │            │       │            │       └ <attribute '__context__' of 'BaseException' objects>
+          │            │       │            └ AttributeError("type object 'Application' has no attribute 'branches'")
+          │            │       └ <attribute '__cause__' of 'BaseException' objects>
+          │            └ AttributeError("type object 'Application' has no attribute 'branches'")
+          └ AttributeError("type object 'Application' has no attribute 'branches'")
+  File "D:\api\.venv\Lib\site-packages\starlette\middleware\base.py", line 144, in coro
+    await self.app(scope, receive_or_disconnect, send_no_error)
+          │    │   │      │                      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.send_no_error at 0x000001F57C482820>
+          │    │   │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x000001F57C482DA0>
+          │    │   └ {'type': 'http', 'asgi': {'version': '3.0'}, 'http_version': '1.1', 'method': 'POST', 'headers': [(b'host', b'test'), (b'acce...
+          │    └ <starlette.middleware.cors.CORSMiddleware object at 0x000001F57C4A5FD0>
+          └ <app.middleware.logging.LoggingMiddleware object at 0x000001F57C4A6120>
+  File "D:\api\.venv\Lib\site-packages\starlette\middleware\cors.py", line 88, in __call__
+    await self.app(scope, receive, send)
+          │    │   │      │        └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.send_no_error at 0x000001F57C482820>
+          │    │   │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x000001F57C482DA0>
+          │    │   └ {'type': 'http', 'asgi': {'version': '3.0'}, 'http_version': '1.1', 'method': 'POST', 'headers': [(b'host', b'test'), (b'acce...
+          │    └ <starlette.middleware.exceptions.ExceptionMiddleware object at 0x000001F57C4A5E80>
+          └ <starlette.middleware.cors.CORSMiddleware object at 0x000001F57C4A5FD0>
+  File "D:\api\.venv\Lib\site-packages\starlette\middleware\exceptions.py", line 63, in __call__
+    await wrap_app_handling_exceptions(self.app, conn)(scope, receive, send)
+          │                            │    │    │     │      │        └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.send_no_error at 0x000001F57C482820>
+          │                            │    │    │     │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x000001F57C482DA0>
+          │                            │    │    │     └ {'type': 'http', 'asgi': {'version': '3.0'}, 'http_version': '1.1', 'method': 'POST', 'headers': [(b'host', b'test'), (b'acce...
+          │                            │    │    └ <starlette.requests.Request object at 0x000001F57C3B16E0>
+          │                            │    └ <fastapi.middleware.asyncexitstack.AsyncExitStackMiddleware object at 0x000001F57C4A5D30>
+          │                            └ <starlette.middleware.exceptions.ExceptionMiddleware object at 0x000001F57C4A5E80>
+          └ <function wrap_app_handling_exceptions at 0x000001F57A6D5380>
+  File "D:\api\.venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\api\.venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+          │   │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x000001F57C483110>
+          │   │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x000001F57C482DA0>
+          │   └ {'type': 'http', 'asgi': {'version': '3.0'}, 'http_version': '1.1', 'method': 'POST', 'headers': [(b'host', b'test'), (b'acce...
+          └ <fastapi.middleware.asyncexitstack.AsyncExitStackMiddleware object at 0x000001F57C4A5D30>
+  File "D:\api\.venv\Lib\site-packages\fastapi\middleware\asyncexitstack.py", line 18, in __call__
+    await self.app(scope, receive, send)
+          │    │   │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x000001F57C483110>
+          │    │   │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x000001F57C482DA0>
+          │    │   └ {'type': 'http', 'asgi': {'version': '3.0'}, 'http_version': '1.1', 'method': 'POST', 'headers': [(b'host', b'test'), (b'acce...
+          │    └ <fastapi.routing.APIRouter object at 0x000001F57C282BE0>
+          └ <fastapi.middleware.asyncexitstack.AsyncExitStackMiddleware object at 0x000001F57C4A5D30>
+  File "D:\api\.venv\Lib\site-packages\starlette\routing.py", line 660, in __call__
+    await self.middleware_stack(scope, receive, send)
+          │    │                │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x000001F57C483110>
+          │    │                │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x000001F57C482DA0>
+          │    │                └ {'type': 'http', 'asgi': {'version': '3.0'}, 'http_version': '1.1', 'method': 'POST', 'headers': [(b'host', b'test'), (b'acce...
+          │    └ <bound method APIRouter.app of <fastapi.routing.APIRouter object at 0x000001F57C282BE0>>
+          └ <fastapi.routing.APIRouter object at 0x000001F57C282BE0>
+  File "D:\api\.venv\Lib\site-packages\fastapi\routing.py", line 2683, in app
+    await route.handle(scope, receive, send)
+          │     │      │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x000001F57C483110>
+          │     │      │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x000001F57C482DA0>
+          │     │      └ {'type': 'http', 'asgi': {'version': '3.0'}, 'http_version': '1.1', 'method': 'POST', 'headers': [(b'host', b'test'), (b'acce...
+          │     └ <function _IncludedRouter.handle at 0x000001F57A72A400>
+          └ _IncludedRouter(original_router=<fastapi.routing.APIRouter object at 0x000001F57C281040>, include_context=_RouterIncludeConte...
+  File "D:\api\.venv\Lib\site-packages\fastapi\routing.py", line 1753, in handle
+    await self.original_router.handle(scope, receive, send)
+          │    │               │      │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x000001F57C483110>
+          │    │               │      │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x000001F57C482DA0>
+          │    │               │      └ {'type': 'http', 'asgi': {'version': '3.0'}, 'http_version': '1.1', 'method': 'POST', 'headers': [(b'host', b'test'), (b'acce...
+          │    │               └ <function APIRouter.handle at 0x000001F57A736610>
+          │    └ <fastapi.routing.APIRouter object at 0x000001F57C281040>
+          └ _IncludedRouter(original_router=<fastapi.routing.APIRouter object at 0x000001F57C281040>, include_context=_RouterIncludeConte...
+  File "D:\api\.venv\Lib\site-packages\fastapi\routing.py", line 2738, in handle
+    await included_router._handle_selected(scope, receive, send)
+          │               │                │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x000001F57C483110>
+          │               │                │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x000001F57C482DA0>
+          │               │                └ {'type': 'http', 'asgi': {'version': '3.0'}, 'http_version': '1.1', 'method': 'POST', 'headers': [(b'host', b'test'), (b'acce...
+          │               └ <function _IncludedRouter._handle_selected at 0x000001F57A72A560>
+          └ _IncludedRouter(original_router=<fastapi.routing.APIRouter object at 0x000001F57C281040>, include_context=_RouterIncludeConte...
+  File "D:\api\.venv\Lib\site-packages\fastapi\routing.py", line 1764, in _handle_selected
+    await route.handle(scope, receive, send)
+          │     │      │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x000001F57C483110>
+          │     │      │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x000001F57C482DA0>
+          │     │      └ {'type': 'http', 'asgi': {'version': '3.0'}, 'http_version': '1.1', 'method': 'POST', 'headers': [(b'host', b'test'), (b'acce...
+          │     └ <function _IncludedRouter.handle at 0x000001F57A72A400>
+          └ _IncludedRouter(original_router=<fastapi.routing.APIRouter object at 0x000001F57BC33250>, include_context=_RouterIncludeConte...
+  File "D:\api\.venv\Lib\site-packages\fastapi\routing.py", line 1753, in handle
+    await self.original_router.handle(scope, receive, send)
+          │    │               │      │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x000001F57C483110>
+          │    │               │      │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x000001F57C482DA0>
+          │    │               │      └ {'type': 'http', 'asgi': {'version': '3.0'}, 'http_version': '1.1', 'method': 'POST', 'headers': [(b'host', b'test'), (b'acce...
+          │    │               └ <function APIRouter.handle at 0x000001F57A736610>
+          │    └ <fastapi.routing.APIRouter object at 0x000001F57BC33250>
+          └ _IncludedRouter(original_router=<fastapi.routing.APIRouter object at 0x000001F57BC33250>, include_context=_RouterIncludeConte...
+  File "D:\api\.venv\Lib\site-packages\fastapi\routing.py", line 2738, in handle
+    await included_router._handle_selected(scope, receive, send)
+          │               │                │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x000001F57C483110>
+          │               │                │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x000001F57C482DA0>
+          │               │                └ {'type': 'http', 'asgi': {'version': '3.0'}, 'http_version': '1.1', 'method': 'POST', 'headers': [(b'host', b'test'), (b'acce...
+          │               └ <function _IncludedRouter._handle_selected at 0x000001F57A72A560>
+          └ _IncludedRouter(original_router=<fastapi.routing.APIRouter object at 0x000001F57BC33250>, include_context=_RouterIncludeConte...
+  File "D:\api\.venv\Lib\site-packages\fastapi\routing.py", line 1773, in _handle_selected
+    await original_route.handle(scope, receive, send)
+          │              │      │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x000001F57C483110>
+          │              │      │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x000001F57C482DA0>
+          │              │      └ {'type': 'http', 'asgi': {'version': '3.0'}, 'http_version': '1.1', 'method': 'POST', 'headers': [(b'host', b'test'), (b'acce...
+          │              └ <function APIRoute.handle at 0x000001F57A707320>
+          └ APIRoute(path='/initialize', name='initialize_app', methods=['POST'])
+  File "D:\api\.venv\Lib\site-packages\fastapi\routing.py", line 1264, in handle
+    await app(scope, receive, send)
+          │   │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x000001F57C483110>
+          │   │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x000001F57C482DA0>
+          │   └ {'type': 'http', 'asgi': {'version': '3.0'}, 'http_version': '1.1', 'method': 'POST', 'headers': [(b'host', b'test'), (b'acce...
+          └ <function request_response.<locals>.app at 0x000001F57C4833D0>
+  File "D:\api\.venv\Lib\site-packages\fastapi\routing.py", line 150, in app
+    await wrap_app_handling_exceptions(app, request)(scope, receive, send)
+          │                            │    │        │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x000001F57C483110>
+          │                            │    │        │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x000001F57C482DA0>
+          │                            │    │        └ {'type': 'http', 'asgi': {'version': '3.0'}, 'http_version': '1.1', 'method': 'POST', 'headers': [(b'host', b'test'), (b'acce...
+          │                            │    └ <starlette.requests.Request object at 0x000001F57C3B1A70>
+          │                            └ <function request_response.<locals>.app.<locals>.app at 0x000001F57C483530>
+          └ <function wrap_app_handling_exceptions at 0x000001F57A6D5380>
+  File "D:\api\.venv\Lib\site-packages\starlette\_exception_handler.py", line 53, in wrapped_app
+    raise exc
+  File "D:\api\.venv\Lib\site-packages\starlette\_exception_handler.py", line 42, in wrapped_app
+    await app(scope, receive, sender)
+          │   │      │        └ <function wrap_app_handling_exceptions.<locals>.wrapped_app.<locals>.sender at 0x000001F57C4837F0>
+          │   │      └ <function BaseHTTPMiddleware.__call__.<locals>.call_next.<locals>.receive_or_disconnect at 0x000001F57C482DA0>
+          │   └ {'type': 'http', 'asgi': {'version': '3.0'}, 'http_version': '1.1', 'method': 'POST', 'headers': [(b'host', b'test'), (b'acce...
+          └ <function request_response.<locals>.app.<locals>.app at 0x000001F57C483530>
+  File "D:\api\.venv\Lib\site-packages\fastapi\routing.py", line 136, in app
+    response = await f(request)
+                     │ └ <starlette.requests.Request object at 0x000001F57C3B1A70>
+                     └ <function get_request_handler.<locals>.app at 0x000001F57C483270>
+  File "D:\api\.venv\Lib\site-packages\fastapi\routing.py", line 690, in app
+    raw_response = await run_endpoint_function(
+                         └ <function run_endpoint_function at 0x000001F57A705850>
+  File "D:\api\.venv\Lib\site-packages\fastapi\routing.py", line 344, in run_endpoint_function
+    return await dependant.call(**values)
+                 │         │      └ {'db': <sqlalchemy.ext.asyncio.session.AsyncSession object at 0x000001F57C4A4830>, 'request': AppInitializeRequest(app_key='i...
+                 │         └ <function initialize_app at 0x000001F57BBF3480>
+                 └ Dependant(path_params=[], query_params=[], header_params=[], cookie_params=[], body_params=[ModelField(field_info=Body(Pydant...
+
+  File "D:\api\app\api\v1\app.py", line 25, in initialize_app
+    return await application_service.initialize(db, request.app_key)
+                 │                   │          │   │       └ 'invalid_key'
+                 │                   │          │   └ AppInitializeRequest(app_key='invalid_key')
+                 │                   │          └ <sqlalchemy.ext.asyncio.session.AsyncSession object at 0x000001F57C4A4830>
+                 │                   └ <function ApplicationService.initialize at 0x000001F57BAB9640>
+                 └ <app.services.application.ApplicationService object at 0x000001F57BBAE3C0>
+
+  File "D:\api\app\services\application.py", line 12, in initialize
+    app = await application_repo.get_by_app_key(db, app_key)
+                │                │              │   └ 'invalid_key'
+                │                │              └ <sqlalchemy.ext.asyncio.session.AsyncSession object at 0x000001F57C4A4830>
+                │                └ <function ApplicationRepository.get_by_app_key at 0x000001F57BBF3320>
+                └ <app.repositories.application.ApplicationRepository object at 0x000001F57BBAE270>
+
+  File "D:\api\app\repositories\application.py", line 16, in get_by_app_key
+    .options(joinedload(Application.restaurant).joinedload(Application.restaurant.class_.branches))
+             │          │           │                      │           │          └ <member 'class_' of 'QueryableAttribute' objects>
+             │          │           │                      │           └ <sqlalchemy.orm.attributes.InstrumentedAttribute object at 0x000001F57BAEFCE0>
+             │          │           │                      └ <class 'app.models.application.Application'>
+             │          │           └ <sqlalchemy.orm.attributes.InstrumentedAttribute object at 0x000001F57BAEFCE0>
+             │          └ <class 'app.models.application.Application'>
+             └ <function joinedload at 0x000001F57B7690C0>
+
+AttributeError: type object 'Application' has no attribute 'branches'

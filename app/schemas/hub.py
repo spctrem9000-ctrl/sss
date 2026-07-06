@@ -1,6 +1,6 @@
 from typing import Optional, Dict, Any
 from datetime import datetime
-from pydantic import BaseModel
+from pydantic import BaseModel, ConfigDict
 
 class HeartbeatRequest(BaseModel):
     version: str
@@ -22,5 +22,4 @@ class HubDeviceResponse(BaseModel):
     version: Optional[str] = None
     last_seen: Optional[datetime] = None
 
-    class Config:
-        from_attributes = True
+    model_config = ConfigDict(from_attributes=True)

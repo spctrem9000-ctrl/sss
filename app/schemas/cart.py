@@ -1,5 +1,5 @@
 from typing import List, Optional
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, ConfigDict
 from app.schemas.menu import ProductResponse, ProductSizeResponse
 
 class CartItemAddRequest(BaseModel):
@@ -35,8 +35,7 @@ class CartItemResponse(BaseModel):
     product: Optional[ProductResponse] = None
     size: Optional[ProductSizeResponse] = None
 
-    class Config:
-        from_attributes = True
+    model_config = ConfigDict(from_attributes=True)
 
 class CartResponse(BaseModel):
     id: int
@@ -57,5 +56,4 @@ class CartResponse(BaseModel):
     coupons_applied: List[str] = [] # Display only
     loyalty_used: float = 0.0 # Display only
 
-    class Config:
-        from_attributes = True
+    model_config = ConfigDict(from_attributes=True)
