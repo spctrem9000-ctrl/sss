@@ -1,5 +1,4 @@
 import asyncio
-import ssl
 from logging.config import fileConfig
 
 from sqlalchemy import pool
@@ -10,21 +9,16 @@ from alembic import context
 from app.core.config import settings
 from app.models.base import Base
 
-# this is the Alembic Config object, which provides
-# access to the values within the .ini file in use.
 config = context.config
 
-# Interpret the config file for Python logging.
-# This line sets up loggers basically.
 if config.config_file_name is not None:
     fileConfig(config.config_file_name)
 
-# add your model's MetaData object here
-# for 'autogenerate' support
 target_metadata = Base.metadata
 
 
 def get_url():
+    # settings.DATABASE_URL already has ?ssl=false appended by config validator
     return settings.DATABASE_URL
 
 
@@ -37,41 +31,27 @@ def run_migrations_offline() -> None:
         literal_binds=True,
         dialect_opts={"paramstyle": "named"},
     )
-
     with context.begin_transaction():
         context.run_migrations()
 
 
 def do_run_migrations(connection: Connection) -> None:
     context.configure(connection=connection, target_metadata=target_metadata)
-
     with context.begin_transaction():
         context.run_migrations()
 
 
 async def run_async_migrations() -> None:
-    """In this scenario we need to create an Engine
-    and associate a connection with the context.
-    """
-
+    """Run migrations asynchronously."""
     url = get_url()
 
     configuration = config.get_section(config.config_ini_section, {})
     configuration["sqlalchemy.url"] = url
 
-    # Build connect_args: disable SSL for local/sqlite, enable for prod postgres
-    connect_args = {}
-    if url.startswith("postgresql"):
-        ssl_ctx = ssl.create_default_context()
-        ssl_ctx.check_hostname = False
-        ssl_ctx.verify_mode = ssl.CERT_NONE
-        connect_args["ssl"] = ssl_ctx
-
     connectable = async_engine_from_config(
         configuration,
         prefix="sqlalchemy.",
         poolclass=pool.NullPool,
-        connect_args=connect_args,
     )
 
     async with connectable.connect() as connection:
